@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: File Manager
+Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com
 Description: Plugin to manage files for your users. You can upload files for your users to access, files upoloaded to the user account are only viewable by the designated user.
 Author: Innovative Solutions

@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com
 Description: Plugin to manage files for your users. You can upload files for your users to access, files upoloaded to the user account are only viewable by the designated user.
 Author: Innovative Solutions
-Version: 1.0
+Version: 1.0.1
 Author URI: http://www.whereyoursolutionis.com
 */
 
@@ -376,7 +376,7 @@ global $current_user;
 
 	
 	if ($handle = opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
-		echo '<b>Right click and select "save as" to download files</b>';
+		echo '<b>Right click and select "save as" to download files</b><br />';
 	while (false !== ($file = readdir($handle))) {
 			
 			if ($file!=".") {

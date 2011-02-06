@@ -28,3 +28,5 @@ The user files plugin allows you to add upload files for a specific user to down
 2. This is the uploads page. Very simple, select a user and upload a file for them.
 
 == Changelog ==
+1.0.1
+-Fixed display issue for dashboard widget

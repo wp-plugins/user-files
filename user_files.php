@@ -2,9 +2,9 @@
 /*
 Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com
-Description: Plugin to manage files for your users. You can upload files for your users to access, files upoloaded to the user account are only viewable by the designated user.
+Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user.
 Author: Innovative Solutions
-Version: 1.0.1
+Version: 1.0.3
 Author URI: http://www.whereyoursolutionis.com
 */
 
@@ -116,11 +116,11 @@ $currOpts_menu = get_option('file_manger_show_menu');
 		if($_POST['file_manger_show_dash']=='yes') {
 		update_option('file_manger_show_dash','yes' );
 		}else{
-		update_option('file_manger_show_dash','no' );
+		update_option('file_manger_show_dash','no' ); 
 		}
 	}
 	
-	if($_POST['file_manger_show_menu'] != $currOpts_menu ) {
+	if($_POST['file_manger_show_menu'] != $currOpts_menu ) { 
 		if($_POST['file_manger_show_menu']=='yes') {
 		update_option('file_manger_show_menu','yes' );
 		}else{

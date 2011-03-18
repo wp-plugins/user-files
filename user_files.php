@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com
 Description: Plugin to manage files for your users. You can upload files for your users to access, files upoloaded to the user account are only viewable by the designated user. Added options for user to add and/or delete files.
 Author: Innovative Solutions
-Version: 1.0.4
+Version: 1.0.6
 Author URI: http://www.whereyoursolutionis.com
 */
 
@@ -13,10 +13,10 @@ register_activation_hook(__FILE__,'ActivateFileDir');
 //register_Deactivation_hook(__FILE__,'DectivateFileDir'); 
 add_action('admin_menu', 'show_FM_pages');
 add_action('wp_dashboard_setup', 'file_manager_dashboard');
+add_shortcode( 'user_file_manager' , 'manage_files_user' );
 
 
-
-
+ 
 function show_FM_pages() {
 
     add_options_page('File Manger', 'File Manager', 'manage_options', 'file_manager_options', 'files_settings_page' );
@@ -26,6 +26,8 @@ function show_FM_pages() {
 	add_menu_page( 'Manage Files', 'Manage Files', 'manage_options', 'manage-files-main', 'manage_files_mainpg');
 
 	add_submenu_page('manage-files-main', 'Add Files', 'Add Files', 'manage_options','files-add-files', 'manage_files_upload');
+	
+	add_submenu_page('manage-files-main', 'Help', 'Help', 'manage_options','files-help-files', 'file_uploader_help');
 
 $currOpts_menu = get_option('file_manger_show_menu');
 
@@ -50,11 +52,7 @@ mkdir (  $upload_dir['basedir'].'/file_uploads', 0777 , true );
 chmod($upload_dir['basedir'].'/file_uploads', 0777);
 }
 
-add_option('file_manger_show_dash', 'yes');
-add_option('file_manger_show_menu', 'yes');
-add_option('file_manger_allow_del', 'no');
-add_option('file_manger_allow_up', 'no');
-
+Checkin_userfile_opts();
 
 
 }
@@ -317,7 +315,9 @@ while (false !== ($file = readdir($handle))) {
 		}
     }
 
-echo '</table>';	
+echo '</table>';
+
+	
 }
 	
 
@@ -357,7 +357,6 @@ $upload_dir = wp_upload_dir();
 	} else{
 		echo '<div id="message" class="error">';
 		echo "There was an error uploading the file, please try again!<br />";
-		echo $php_errormsg;
 		echo '</div>';
 	}
 
@@ -398,6 +397,7 @@ Choose a file to upload, your upload limit is <?php echo $max_post; ?>M <br /> <
 <?php
 }
 
+
 function manage_files_user() {
 
 $upload_dir = wp_upload_dir();
@@ -421,7 +421,18 @@ $isitGone = unlink($_GET['deletefile']);
 }
 
 if (isset($_POST['addfiles'])){	
-			$target_path = $upload_dir['basedir'].'/file_uploads/'. $current_user->ID.'/';
+
+$subDir=$current_user->ID;
+
+			$usFolder = file_exists ( $upload_dir['basedir'].'/file_uploads/'.$subDir); 
+
+			if (!$usFolder) {
+			mkdir ( $upload_dir['basedir'].'/file_uploads/'. $subDir, 0777 , true );
+			chmod($upload_dir['basedir'].'/file_uploads/'. $subDir,0777);
+			}
+			
+			
+			$target_path = $upload_dir['basedir'].'/file_uploads/'. $subDir.'/';
 			
 			$target_path = $target_path . basename($_FILES['uploadedfile']['name']); 
 
@@ -433,9 +444,8 @@ if (isset($_POST['addfiles'])){
 			} else{
 				echo '<div id="message" class="error">';
 				echo "There was an error uploading the file, please try again!<br />";
-				echo $php_errormsg;
 				echo '</div>';
-			}
+			} 
 	}
 
 
@@ -453,7 +463,7 @@ echo'<thead><th>Your Files</th><th></th></thead>';
 				$currOpts_up = get_option('file_manger_allow_del');
 				
 				if($currOpts_up=='yes') {
-				echo '<td><a href="admin.php?page=manage-files-user&deletefile='.$upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/'.$file.'">delete</a></td></tr>';
+				echo '<td><a href="'.$_SERVER['REQUEST_URI'].'&deletefile='.$upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/'.$file.'">delete</a></td></tr>';
 				}else{
 				echo '<td></td></tr>';
 				
@@ -532,7 +542,28 @@ global $current_user;
 	echo'You have no files';
 	}
 
+}
 
+
+function file_uploader_help() { ?>
+
+<table class="widefat">
+
+<thead><tr><td><h2>Help</h2></td></tr></thead>
+
+<tr><td>
+To allow users to upload files or delete files go to the <a href="options-general.php?page=file_manager_options">options page</a> and check the appropriate options.<br /><p>
+
+The options to enable the File manager page and dashboard widgets are in the <a href="options-general.php?page=file_manager_options">options</a> as well.  The File Manager page is only available in the admin area. If you wish to show the user the file list you can use the shorcode option on your page.  If you have options selected for the user upload and/or delete files these options will be available on the page as well. </td></tr>
+<tr><td>Shortcode for use in template page: [user_file_manager] </td></tr>
+
+
+</table>
+
+
+
+
+<?php
 
 }
 

@@ -3,8 +3,8 @@ Contributors: Innovative Solutions
 Tags: user files, User Files
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
-Tested up to: 3.0.4
-Stable Tag:1.0.6
+Tested up to: 3.1
+Stable Tag:1.0.8
 
 User files allows you to upload files for a specific user to download.
 
@@ -40,3 +40,6 @@ The user files plugin allows you to add upload files for a specific user to down
 -Fixed user uploads page, user was unable to upload unless they already had files
 -Added Shortcode to place file list in template page
 -Added help page with short general information
+
+1.0.8
+-- Added admin notification option for user uploads. Idea submitted by Aleks Berland.

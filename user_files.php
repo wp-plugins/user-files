@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com
 Description: Plugin to manage files for your users. You can upload files for your users to access, files upoloaded to the user account are only viewable by the designated user. Added options for user to add and/or delete files.
 Author: Innovative Solutions
-Version: 1.0.6
+Version: 1.0.8
 Author URI: http://www.whereyoursolutionis.com
 */
 
@@ -14,7 +14,6 @@ register_activation_hook(__FILE__,'ActivateFileDir');
 add_action('admin_menu', 'show_FM_pages');
 add_action('wp_dashboard_setup', 'file_manager_dashboard');
 add_shortcode( 'user_file_manager' , 'manage_files_user' );
-
 
  
 function show_FM_pages() {
@@ -34,7 +33,7 @@ $currOpts_menu = get_option('file_manger_show_menu');
 	
 	if (!current_user_can('manage_options') and $currOpts_menu==yes)  {
 	
-	add_menu_page( 'Manage Files', 'Manage Files', 'read', 'manage-files-user', 		'manage_files_user');
+	add_menu_page( 'Manage Files', 'Manage Files', 'read', 'manage-files-user', 'manage_files_user');
 	
 	}
 
@@ -97,6 +96,7 @@ $currOpts_dash = get_option('file_manger_show_dash');
 $currOpts_menu = get_option('file_manger_show_menu');
 $currOpts_up = get_option('file_manger_allow_up');
 $currOpts_del = get_option('file_manger_allow_del');
+$currOpts_notify = get_option('file_manger_notify');
 
 if($currOpts_dash and !$currOpts_up) {
 
@@ -121,6 +121,9 @@ echo '</div>';
 	}
 	if(!$CurrOpts_del){
 	add_option('file_manger_allow_up', 'no');
+	}
+	if(!$currOpts_notify){
+	add_option('file_manger_notify', '');
 	}
 
 
@@ -148,6 +151,7 @@ $currOpts_dash = get_option('file_manger_show_dash');
 $currOpts_menu = get_option('file_manger_show_menu');
 $currOpts_up = get_option('file_manger_allow_up');
 $currOpts_del = get_option('file_manger_allow_del');
+$currOpts_notify = get_option('file_manger_notify');
 
 	if ($_POST['file_manger_show_dash'] != $currOpts_dash ) {
 	
@@ -181,7 +185,13 @@ $currOpts_del = get_option('file_manger_allow_del');
 		update_option('file_manger_allow_up','no' );
 		}
 	}
-
+	
+	if($_POST['file_manger_notify'] != $currOpts_notify ) { 
+		update_option('file_manger_notify',$_POST['file_manger_notify'] );
+	}
+	
+	
+	
 	echo '<div id="message" class="updated fade">Settings Saved</div>';
 	
 }
@@ -190,6 +200,7 @@ $currOpts_dash = get_option('file_manger_show_dash');
 $currOpts_menu = get_option('file_manger_show_menu');
 $currOpts_up = get_option('file_manger_allow_up');
 $currOpts_del = get_option('file_manger_allow_del');
+$currOpts_notify = get_option('file_manger_notify');
 
  ?>
  <table class="form-table">
@@ -208,6 +219,10 @@ $currOpts_del = get_option('file_manger_allow_del');
 	<tr>
 	<td><input type="checkbox" name="file_manger_allow_del" value="yes" <?php if ($currOpts_del== 'yes'){ echo 'checked'; }?>> Allow users to delete files<br></td>
     </tr>  
+	
+	<tr>
+	<td>Send email upload notifcations to<input type="text" name="file_manger_notify" value="<?php echo $currOpts_notify; ?>"> <em>(leave blank to not be notified of uploads) </em><br></td>
+    </tr> 
 	
 	<tr><td>
 	<input type='hidden' name ='update' value='update'>
@@ -439,10 +454,20 @@ $subDir=$current_user->ID;
 			if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 				echo '<div id="message" class="updated">';
 				echo "The file ".  basename( $_FILES['uploadedfile']['name']). 
-				" has been uploaded";
+				" has been uploaded<br />";
+		
+				$DoMails =get_option('file_manger_notify');
+				
+				if (isset($DoMails)){ 
+				
+				wp_mail( $DoMails, 'New file at '. get_option('blogname'), $current_user->user_login.' has just uploaded '.  basename( $_FILES['uploadedfile']['name']) .' at '. get_option('blogname'));
+				echo 'An adminisrator has successfully been notified of your upload.';
+				
+				}
 				echo '</div>';
+				
 			} else{
-				echo '<div id="message" class="error">';
+				echo '<div id="message" class="error">'; 
 				echo "There was an error uploading the file, please try again!<br />";
 				echo '</div>';
 			} 

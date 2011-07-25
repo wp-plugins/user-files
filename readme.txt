@@ -1,16 +1,18 @@
 === user files ===
 Contributors: Innovative Solutions
-Tags: user files, User Files
+Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
-Tested up to: 3.1
-Stable Tag:1.0.8
+Tested up to: 3.2.1
+Stable Tag:2.0
 
-User files allows you to upload files for a specific user to download.
+User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
 == Description ==
 
 The user files plugin allows you to add upload files for a specific user to download or view.  The file upload is limited to the post max of your server.  Files are uploaded to a user and can be accesses via an access page, dashboard widget, or both.  The user files options page will allow you to turn on page menu and dashboard widget. Other options to allow user to delete their files and add to them. Also adds a file manager page to view all files and which user they belong to. You can delete files individually or delete the users folder.  
+
+Files can have icons and category, both are customizable.  Users and admins can search file names or parts and admins can filter files by category and/or by user. 
 
 
 
@@ -22,10 +24,6 @@ The user files plugin allows you to add upload files for a specific user to down
 
 
 
-== Screenshots ==
-
-1. Screen1.png is the admin manager page, you can delete files and user folders there 
-2. Screen2.png is the uploads page. Very simple, select a user and upload a file for them.
 
 == Changelog ==
 1.0.1
@@ -43,3 +41,17 @@ The user files plugin allows you to add upload files for a specific user to down
 
 1.0.8
 -- Added admin notification option for user uploads. Idea submitted by Aleks Berland.
+
+2.0
+-Added Categories for files
+-Added icon support
+-Fixed error opening non-existant directory
+-Added file search
+-Added category filter
+-Added files download widget
+-Added files upload widget
+-Fixed shortcode using output buffer
+-Added one-click download function
+-Added complete uninstall function
+-Added I10n, .pot file available for contributors
+-css added for in page display table

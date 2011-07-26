@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable Tag:2.0
+Stable Tag:2.0.1
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -27,12 +27,12 @@ Files can have icons and category, both are customizable.  Users and admins can 
 
 == Changelog ==
 1.0.1
--Fixed display issue for dashboard widget<br />
+-Fixed display issue for dashboard widget
 
 1.0.2
--Added option to allow users to delete their files<br />
--Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)<br />
--Both features can be turned on or off in the File Manager Options settings<br />
+-Added option to allow users to delete their files
+-Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)
+-Both features can be turned on or off in the File Manager Options settings
 
 1.0.6
 -Fixed user uploads page, user was unable to upload unless they already had files
@@ -55,3 +55,6 @@ Files can have icons and category, both are customizable.  Users and admins can 
 -Added complete uninstall function
 -Added I10n, .pot file available for contributors
 -css added for in page display table
+
+2.0.1
+-Fixed bug with custom capabilities

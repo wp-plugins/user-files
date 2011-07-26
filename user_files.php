@@ -15,6 +15,7 @@ add_action('wp_dashboard_setup', 'file_manager_dashboard');
 add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
 add_action('init','getDownloads');
 add_action('wp_head','uploadHelper');
+add_action('admin_init','upgrade');
 
 
 
@@ -124,7 +125,28 @@ $wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' );
 }
 
 
+function upgrade(){
 
+$noUp = get_option('file_manger_defaultcat');
+
+if ($noUp){
+add_option('file_manger_show_dash', 'yes');
+add_option('file_manger_show_menu', 'yes');
+add_option('file_manger_allow_del', 'no');
+add_option('file_manger_allow_up', 'no');
+add_option('file_manger_notify', '');
+add_option('file_manger_credit');
+add_option('file_manger_defaultcat','misc');
+	
+
+$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
+$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
+}
+
+
+
+
+}
 
 function DectivateFileDir() {
 global $wpdb;

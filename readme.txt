@@ -27,12 +27,12 @@ Files can have icons and category, both are customizable.  Users and admins can 
 
 == Changelog ==
 1.0.1
--Fixed display issue for dashboard widget
+-Fixed display issue for dashboard widget<br />
 
 1.0.2
--Added option to allow users to delete their files
--Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)
--Both features can be turned on or off in the File Manager Options settings
+-Added option to allow users to delete their files<br />
+-Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)<br />
+-Both features can be turned on or off in the File Manager Options settings<br />
 
 1.0.6
 -Fixed user uploads page, user was unable to upload unless they already had files

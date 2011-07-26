@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable Tag:2.0.2
+Stable Tag:2.0.3
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -24,9 +24,6 @@ Files can have icons and category, both are customizable.  Users and admins can 
 
 == Frequently Asked Questions ==
 
-= I get the "You do not have permission to view this page" after upgrade=
-
-Deactivate and re-activate the plugin.
 
 
 == Changelog ==
@@ -60,5 +57,5 @@ Deactivate and re-activate the plugin.
 *Added I10n, .pot file available for contributors
 *css added for in page display table
 
-=2.0.2=
-*Fixed bug with custom capabilities
+=2.0.3=
+*Fixed bug with custom capabilities and restored manage_options, will add custom caps at a later date. Don't have time to fix it at this time.

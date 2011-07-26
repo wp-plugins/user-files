@@ -181,25 +181,25 @@ if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 
 function show_FM_pages() {
 
-    add_options_page(__('User Files Settings','userfiles'), __('User Files','userfiles'), 'manage_userfiles_settings', 'file_manager_options', 'files_settings_page' );
+    add_options_page(__('User Files Settings','userfiles'), __('User Files','userfiles'), 'manage_options', 'file_manager_options', 'files_settings_page' );
 
-	add_menu_page( __('Manage Files','userfiles'), __('Manage Files','userfiles'), 'manage_userfiles', 'manage-files-main', 'manage_files_mainpg');
+	add_menu_page( __('Manage Files','userfiles'), __('Manage Files','userfiles'), 'manage_options', 'manage-files-main', 'manage_files_mainpg');
 
-	add_submenu_page('manage-files-main', __('Add Files','userfiles'), __('Add Files','userfiles'), 'manage_userfiles','files-add-files', 'manage_files_upload');
+	add_submenu_page('manage-files-main', __('Add Files','userfiles'), __('Add Files','userfiles'), 'manage_options','files-add-files', 'manage_files_upload');
 	
-	add_submenu_page('manage-files-main', __('Categories','userfiles'), __('Categories','userfiles'), 'manage_userfiles','files-add-cats', 'ShowCategories');
+	add_submenu_page('manage-files-main', __('Categories','userfiles'), __('Categories','userfiles'), 'manage_options','files-add-cats', 'ShowCategories');
 	
-	add_submenu_page('manage-files-main', __('Manage Icons','userfiles'), __('Manage Icons','userfiles'), 'manage_userfiles','files-add-icons', 'Icon_management'); 
+	add_submenu_page('manage-files-main', __('Manage Icons','userfiles'), __('Manage Icons','userfiles'), 'manage_options','files-add-icons', 'Icon_management'); 
 	
-	add_submenu_page('manage-files-main', __('FTP Paths','userfiles'), __('FTP Paths','userfiles'), 'manage_userfiles','files-see-ftp', 'FTP_Paths'); 
+	add_submenu_page('manage-files-main', __('FTP Paths','userfiles'), __('FTP Paths','userfiles'), 'manage_options','files-see-ftp', 'FTP_Paths'); 
 	
 	
-	add_submenu_page('manage-files-main', __('Help','userfiles'), __('Help','userfiles'), 'manage_userfiles','files-help-files', 'file_uploader_help');
+	add_submenu_page('manage-files-main', __('Help','userfiles'), __('Help','userfiles'), 'manage_options','files-help-files', 'file_uploader_help');
 
 $currOpts_menu = get_option('file_manger_show_menu');
 
 	
-	if (!current_user_can('manage_userfiles') and $currOpts_menu==yes)  {
+	if (!current_user_can('manage_options') and $currOpts_menu==yes)  {
 	
 	add_menu_page( __('Manage Files','userfiles'), __('Manage Files','userfiles'), 'read', 'manage-files-user', 'manage_files_user');
 	

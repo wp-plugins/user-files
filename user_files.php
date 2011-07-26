@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.0.2
+Version: 2.0.3
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -15,8 +15,6 @@ add_action('wp_dashboard_setup', 'file_manager_dashboard');
 add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
 add_action('init','getDownloads');
 add_action('wp_head','uploadHelper');
-add_action('admin_init','upgrade');
-
 
 
 add_action( 'init', 'userfiles_textdomain' );
@@ -119,32 +117,8 @@ add_option('file_manger_credit');
 add_option('file_manger_defaultcat','misc');
 	
 
-$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
-$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
-
-}
-
-
-function upgrade(){
-
-$noUp = get_option('file_manger_defaultcat');
-
-if ($noUp){
-add_option('file_manger_show_dash', 'yes');
-add_option('file_manger_show_menu', 'yes');
-add_option('file_manger_allow_del', 'no');
-add_option('file_manger_allow_up', 'no');
-add_option('file_manger_notify', '');
-add_option('file_manger_credit');
-add_option('file_manger_defaultcat','misc');
-	
-
-$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
-$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
-}
-
-
-
+//$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
+//$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
 
 }
 
@@ -1427,10 +1401,8 @@ return;
 
 
 function userfiles_header(){
-	if(current_user_can('manage_userfiles')){
-	
-	
-	$adtent = file_get_contents('http://www.whereyoursolutionis.com/ads/userfiles.html');
+	if(current_user_can('manage_options')){
+		$adtent = file_get_contents('http://www.whereyoursolutionis.com/ads/userfiles.html');
 	echo $adtent;
 	
 	

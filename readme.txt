@@ -56,5 +56,5 @@ Files can have icons and category, both are customizable.  Users and admins can 
 -Added I10n, .pot file available for contributors
 -css added for in page display table
 
-2.0.1
+2.0.2
 -Fixed bug with custom capabilities

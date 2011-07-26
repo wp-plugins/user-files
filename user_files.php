@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.0
+Version: 2.0.1
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -117,18 +117,21 @@ add_option('file_manger_notify', '');
 add_option('file_manger_credit');
 add_option('file_manger_defaultcat','misc');
 	
-	
-    $wp_roles->add_cap( 'administrator', 'manage userfiles' );
-	$wp_roles->add_cap( 'administrator', 'manage userfiles settings' ); 
+
+$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
+$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
 
 }
+
+
+
 
 function DectivateFileDir() {
 global $wpdb;
 global $wp_roles;
 
-$wp_roles->remove_cap( 'administrator', 'manage userfiles' );
-$wp_roles->remove_cap( 'administrator', 'manage userfiles settings' );
+$wp_roles->remove_cap( 'administrator', 'manage_userfiles' );
+$wp_roles->remove_cap( 'administrator', 'manage_userfiles_settings' ); 
 
 
 $upload_dir = wp_upload_dir();
@@ -1402,8 +1405,7 @@ return;
 
 
 function userfiles_header(){
-
-	if(current_user_can('admin_userfiles')){
+	if(current_user_can('manage_userfiles')){
 	
 	
 	$adtent = file_get_contents('http://www.whereyoursolutionis.com/ads/userfiles.html');
@@ -1654,6 +1656,7 @@ endforeach;
 
 
 function userfiles_credit(){
+
 
 return 'User File Manger created by <a href="http://www.whereyoursolutionis.com">Innovative Solutions</a>';
 

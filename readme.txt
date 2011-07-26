@@ -22,39 +22,43 @@ Files can have icons and category, both are customizable.  Users and admins can 
 1. Upload `user-files.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
+== Frequently Asked Questions ==
 
+= I get the "You do not have permission to view this page" after upgrade=
+
+Deactivate and re-activate the plugin.
 
 
 == Changelog ==
-1.0.1
--Fixed display issue for dashboard widget
+=1.0.1=
+*Fixed display issue for dashboard widget
 
-1.0.2
--Added option to allow users to delete their files
--Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)
--Both features can be turned on or off in the File Manager Options settings
+=1.0.2=
+*Added option to allow users to delete their files
+*Added option to allow users to add files to their account (suggestion sent in by Pedro Pregnolato)
+*Both features can be turned on or off in the File Manager Options settings
 
-1.0.6
--Fixed user uploads page, user was unable to upload unless they already had files
--Added Shortcode to place file list in template page
--Added help page with short general information
+=1.0.6=
+*Fixed user uploads page, user was unable to upload unless they already had files
+*Added Shortcode to place file list in template page
+*Added help page with short general information
 
-1.0.8
--- Added admin notification option for user uploads. Idea submitted by Aleks Berland.
+=1.0.8=
+* Added admin notification option for user uploads. Idea submitted by Aleks Berland.
 
-2.0
--Added Categories for files
--Added icon support
--Fixed error opening non-existant directory
--Added file search
--Added category filter
--Added files download widget
--Added files upload widget
--Fixed shortcode using output buffer
--Added one-click download function
--Added complete uninstall function
--Added I10n, .pot file available for contributors
--css added for in page display table
+=2.0=
+*Added Categories for files
+*Added icon support
+*Fixed error opening non-existant directory
+*Added file search
+*Added category filter
+*Added files download widget
+*Added files upload widget
+*Fixed shortcode using output buffer
+*Added one-click download function
+*Added complete uninstall function
+*Added I10n, .pot file available for contributors
+*css added for in page display table
 
-2.0.2
--Fixed bug with custom capabilities
+=2.0.2=
+*Fixed bug with custom capabilities

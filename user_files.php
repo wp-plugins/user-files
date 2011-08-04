@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.0.3
+Version: 2.0.5
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -645,9 +645,9 @@ while ( ($file = readdir($handle))!== false) {
 								echo $getCrntCat;
 								}
 								
-						echo'</td>';			
+						echo'</td>';			 
 																
-						echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$files.'">     <img title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>   |   <a href="admin.php?page=manage-files-main&deletefile='.$userNum.'/'.$files.'">     <img title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a></td></tr>';
+						echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$files.'">     <img title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>   |   <a href="admin.php?page=manage-files-main&deletefile='.$files.'">     <img title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a></td></tr>';
 						$tp++;
 								}
 				
@@ -875,7 +875,7 @@ $newCat = $_POST['addcat'];
 if (isset($newCat)){
 
 
-$isCat = $wpdb->query( "SELECT * FROM category WHERE category='" .$newCat. "'");
+$isCat = $wpdb->query( "SELECT * FROM ".$wpdb->prefix."userfile_category WHERE category='" .$newCat. "'");
 
 		if ($isCat){
 		$err=1;
@@ -979,7 +979,7 @@ $upload_dir = wp_upload_dir();
 
 	if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 	
-	$wpdb->insert( $wpdb->prefix . "userfile_cat", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
+	$wpdb->insert( $wpdb->prefix . "userfile_cats", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
 	
 		echo '<div id="message" class="updated">';
 		echo __("The file ",'userfiles').  basename( $_FILES['uploadedfile']['name']).' '. 
@@ -1238,7 +1238,7 @@ echo '</select>   ';
 				 
 				 </td></tr><tr><td> 
 				 <?php
-					$aCats = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix."userfile_category" );
+					$aCats = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix." egory" );
                     ?>    
 						Category:  <select name="curr_cat" id="curr_cat">
                         <?php
@@ -1311,7 +1311,7 @@ global $current_user;
 								
 												
 																
-						echo '<td width="10%" align="right"><a rel="download.png" href="index.php?theDLfile='.$current_user->ID.'/'.$file.'">     <img title="'.__('Download','userfiles').' '.$file.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" /></td></tr></table> ';
+						echo '<td width="10%" align="right"><a rel="download.png" href="index.php?theDLfile='.$file.'">     <img title="'.__('Download','userfiles').' '.$file.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" /></td></tr></table> ';
 						
 						echo '<hr width="100%" size="2px" />';
 				}
@@ -1355,42 +1355,44 @@ The options to enable the File manager page and dashboard widgets are in the <a 
 
 function getDownloads(){
 
-
 if (isset($_GET['theDLfile'])){
 	
-	
+	echo $_GET['theDLfile'];
 		$upload_dir = wp_upload_dir();
 		global $current_user;
 			  get_currentuserinfo();
+              
 	
 	$file = $_GET['theDLfile'];
 	$url=$upload_dir['baseurl'].'/file_uploads/'.$current_user->ID .'/';
  
  if(!file)
  {
-     die(__('file not found','userfiles'));
+     die(__('file not found'));
  }
  else
  {
- $filespl=explode('/',$_GET['theDLfile']);
 
  $filePTH = str_replace(" ","%20",$file);
- $fileNM = str_replace(" ","_",$filespl[1]);
+ $fileNM = str_replace(" ","_",$file);
  
     
      header("Cache-Control: public");
      header("Content-Description: File Transfer");
      header("Content-Disposition: attachment; filename=".  $fileNM);
-     header("Content-Type: application/zip");
+     header("Content-Type: application/octet-stream");
      header("Content-Transfer-Encoding: binary");
-    
+     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file));
+    ob_clean();
+    flush();
 
-	 
+         readfile($url.'/'.$filePTH);
  }
 	
 
-	     // Read the file from disk
-         readfile($upload_dir['baseurl'].'/file_uploads/'.$current_user->ID .'/'.$filePTH);	
+	     	
 	
 	}
 return; 
@@ -1448,7 +1450,7 @@ unset($err2);
 
 		if (isset($_POST['extension']) || isset($_FILES['uploadedicon'])) {
 					
-					$already = $wpdb->query("SELECT FROM ".$wpdb->prefix."userfile_icons WHERE extension ='".$_POST['extension']."'");
+					$already = $wpdb->query("SELECT * FROM ".$wpdb->prefix."userfile_icons WHERE extension ='".$_POST['extension']."'");
 					
 					if (empty($already)){
 							$target_path = $upload_dir['basedir'].'/userfile_icons/';

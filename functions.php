@@ -38,11 +38,11 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
         
         
         if (strpos($url,'?') ==false){
-		$dnlLink = curPageName().'?theDLfile='.$userID.'/'.$Thefile;
+		$dnlLink = curPageName().'?theDLfile='.$Thefile;
 		$DelLink = curPageName().'?deletefile='.$Thefile;
 		}else{
 		$DelLink = $post->ID.'&deletefile='.$Thefile;
-		$dnlLink = $post->ID.'&theDLfile='.$userID.'/'.$Thefile;
+		$dnlLink = $post->ID.'&theDLfile='.$Thefile;
 		}
 		
 	
@@ -106,7 +106,7 @@ global $wp_query;
 		
 		
 		
-		echo '     |     <a href="admin.php?page=manage-files-main&deletefile='.$userID.'/'.$files.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a> </td></tr>';
+		echo '     |     <a href="admin.php?page=manage-files-main&deletefile='.$userID.'/'.$files.'">     <img title="Delete '.$Thefile.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a> </td></tr>';
 		}else{
 		echo '</td></tr>';
 		
@@ -475,6 +475,7 @@ return true;
 function uploadHelper(){
 
 if (isset($_POST['addfiles'])){	
+
 
                   global $wpdb;
 		         $upload_dir = wp_upload_dir();

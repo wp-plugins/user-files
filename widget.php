@@ -30,11 +30,11 @@ class userfilesList extends WP_Widget {
 						$ext = pathinfo($file, PATHINFO_EXTENSION); 
 						$tExt= SetIcon($ext);
                          if (strpos($url,'?') ==false){
-                        $dnlLink = curPageName().'?theDLfile='.$user_id.'/'.$file;
+                        $dnlLink = curPageName().'?theDLfile='.$file;
                         
                         }else{
                         
-                        $dnlLink = curPageName().'&theDLfile='.$user_id.'/'.$file;
+                        $dnlLink = curPageName().'&theDLfile='.$file;
                         }
 		
 				

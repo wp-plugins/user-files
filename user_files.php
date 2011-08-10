@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.0.5
+Version: 2.0.6
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -15,6 +15,7 @@ add_action('wp_dashboard_setup', 'file_manager_dashboard');
 add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
 add_action('init','getDownloads');
 add_action('wp_head','uploadHelper');
+add_action('admin_notices','verifyInstall');
 
 
 add_action( 'init', 'userfiles_textdomain' );
@@ -115,6 +116,7 @@ add_option('file_manger_allow_up', 'no');
 add_option('file_manger_notify', '');
 add_option('file_manger_credit');
 add_option('file_manger_defaultcat','misc');
+add_option('file_manger_upgrade','1');
 	
 
 //$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
@@ -1357,7 +1359,6 @@ function getDownloads(){
 
 if (isset($_GET['theDLfile'])){
 	
-	echo $_GET['theDLfile'];
 		$upload_dir = wp_upload_dir();
 		global $current_user;
 			  get_currentuserinfo();
@@ -1490,7 +1491,7 @@ unset($err2);
  
 					}else{
 					echo '<div id="message" class="error">'; 
-					echo __('Extension already exsists, please delete the current extension set before uploading a new one.','userfiles') .'<br />';
+					echo __('Extension already exists, please delete the current extension set before uploading a new one.','userfiles') .'<br />';
 					echo '</div>';
 					
 				if (isset($_POST['extension'])){

@@ -532,5 +532,19 @@ if (isset($_POST['addfiles'])){
 }
 
 
+function verifyInstall(){
+
+$isInstallOK=get_option('file_manger_upgrade');
+if ($isInstallOK!='1'){
+
+ActivateFileDir(); 
+echo '<div id="messages" class="updated highlight">'.__('User Files has been updated, if you experience any issues please deactivate and reactivate the plugin').'</div>';
+
+update_option('file_manger_upgrade','1');
+    
+    }
+
+
+}
 
 ?>

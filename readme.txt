@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable Tag:2.0.5
+Stable Tag:2.0.6
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -64,3 +64,7 @@ Files can have icons and category, both are customizable.  Users and admins can 
 *Fixed bug writing categories to the database.
 *Fixed issue with corrupt file downloads on wordpress 3.2
 *Fixed a couple other minor bugs
+
+=2.0.6=
+*Removed echo causing header sent error messages
+

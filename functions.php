@@ -33,9 +33,9 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
 								}
 		    echo'</td>';	
 		
-        $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $url = $_SERVER['PATH_INFO'];
         
-        
+     
         
         if (strpos($url,'?') ==false){
 		$dnlLink = curPageName().'?theDLfile='.$Thefile;

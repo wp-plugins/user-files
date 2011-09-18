@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.1.0
+Version: 2.1.2
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -1403,33 +1403,43 @@ $url=$upload_dir['baseurl'].'/file_uploads/'.$theDLfile_array[0] .'/';
  }
  else
  {
+ 
 
  $filePTH = str_replace(" ","%20",$file);
  $fileNM = str_replace(" ","_",$file);
-  
+
+
  
-    header('Content-Description: File Transfer');
-    header ('Content-Disposition:attachment; filename='.$fileNM); 
-     
-     
+ 
+    
 
     if (isset($_SERVER['HTTP_USER_AGENT']) && 
     (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
-    header("Content-Type: application/octet-stream");  
-    header("Cache-control: ");
-    header("Pragma: ");
-    }ELSE{
+    
+	$file_extension = strtolower(substr(strrchr($url.'/'.$fileNM ,"."),1));
+            if ($file_extension == 'pdf') {
+                 header("Content-Type: application/pdf");
+				 @readfile($url.'/'.$filePTH) or die("File not found.");  
+				
+				}else{	
+				header ('location:'.$url.'/'.$filePTH); 
+			   }
+     
+    }else{
+	header('Content-Description: File Transfer');
     header("Content-Type: application/force-download");
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public'); 
-    }
-
-    header('Content-Length: ' . filesize( $filePTH));
+    header ('Content-Disposition:attachment; filename='.$fileNM); 
+    header('Content-Length: ' . (filesize($filePTH)));
     ob_end_clean();
     flush();
     @readfile($url.'/'.$filePTH) or die("File not found."); 
-    //readfile($file);
-    exit;
+    exit; 
+
+    } 
+    
+    
  
  
  

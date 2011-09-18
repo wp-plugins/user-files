@@ -3,14 +3,23 @@
 
 
 function curPageName() {
- return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+ //return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+ 
+//$url = $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
+ //return $url .'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+ $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+$protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
+$port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
+
+ 
 }
 
 ##########################
 # List User Files       #
 ##########################
 function ListUserFiles($Thefile,$TheClass,$userID) {
-
 	global $wpdb;	
 		
 		$ext = pathinfo($Thefile, PATHINFO_EXTENSION);
@@ -33,19 +42,23 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
 								}
 		    echo'</td>';	
 		
-        $url = $_SERVER['PATH_INFO'];
         
-     
-        
-        if (strpos($url,'?') ==false){
-		$dnlLink = curPageName().'?theDLfile='.$Thefile;
-		$DelLink = curPageName().'?deletefile='.$Thefile;
+        if (strpos(curPageName(),'?') ==false){ 
+		$dnlLink = curPageName().'?theDLfile='.$userID.'/'.$Thefile;
+		$DelLink = curPageName().'?deletefile='.$userID.'/'.$Thefile; 
 		}else{
-		$DelLink = $post->ID.'&deletefile='.$Thefile;
-		$dnlLink = $post->ID.'&theDLfile='.$Thefile;
-		}
+
+            if(!$post->ID){ 
+            $DelLink = curPageName().'&deletefile='.$userID.'/'.$Thefile;
+		    $dnlLink = curPageName().'&theDLfile='.$userID.'/'.$Thefile; 
+
+            }else{
+        
+            $DelLink = $post->ID.'&deletefile='.$userID.'/'.$Thefile;
+            $dnlLink = $post->ID.'&theDLfile='.$userID.'/'.$Thefile;
+            }
 		
-	
+	}
 		
 		echo '<td class="'.$TheClass.'" align="right"><a rel="download.png" href="'.$dnlLink.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';
 		
@@ -56,7 +69,7 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
 
 		
 		
-		echo '     |     <a href="'.$DelLink.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a> </td></tr>';
+		echo '     |     <a href="'.$DelLink.'">     <img title="Delete '.$Thefile.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a> </td></tr>';
 		}else{
 		echo '</td></tr>';
 		
@@ -219,21 +232,30 @@ $currOpts_credits = get_option('file_manger_credit');
 		global $current_user;
 			  get_currentuserinfo();
 
-		if (isset($_GET['deletefile'])){
+if (isset($_GET['deletefile'])){
 
-		$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/'.$_GET['deletefile']);
+$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$_GET['deletefile']);
 
-				if ($isitGone) {
+$toUsFl=explode ( "/" , $_GET['deletefolder'] );
 
-				echo '<div id="message" class="updated">';
-				echo __("The file has been deleted",'userfiles');
-				echo '</div>';
-				} else{
-				echo '<div id="message" class="error">';
-				echo __("There was an error deleting the file, please try again!",'userfiles');
-				echo '</div>';
-				}
+
+$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
+	
+		if ($isitGone) {
+
+		echo '<div id="message" class="updated">';
+		echo __('The file has been deleted','userfiles');
+		echo '</div>';
+		} else{ 
+		echo '<div id="message" class="error">';
+		echo __('There was an error deleting the file, please try again!','userfiles');
+		echo '</div>';
 		}
+		
+		
+		
+	
+}
 
 		if (isset($_POST['addfiles'])){	
 
@@ -445,7 +467,7 @@ global $wpdb;
 
 if ($cate=='chge'){
 return true;
-}else{
+}else{ 
  $currOpts_defcat = get_option('file_manger_defaultcat');
 
 		$IsaCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$file ."' and user_id='" .$tUserid. "' and category='".$cate."'");	 
@@ -546,5 +568,7 @@ update_option('file_manger_upgrade','1');
 
 
 }
+
+
 
 ?>

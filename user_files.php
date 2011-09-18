@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.0.8
+Version: 2.1.2
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -16,6 +16,7 @@ add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
 add_action('init','getDownloads');
 add_action('wp_head','uploadHelper');
 add_action('admin_notices','verifyInstall');
+add_filter('query_vars', 'getDeleted');
 
 
 add_action( 'init', 'userfiles_textdomain' );
@@ -32,6 +33,10 @@ require(ABSPATH . 'wp-content/plugins/user-files/functions.php');
 
 	
 function ActivateFileDir() {
+
+$isInstallOK=get_option('file_manger_upgrade');
+
+if($isInstallOK!='1'){
 global $wpdb;
 global $wp_roles;
 $upload_dir = wp_upload_dir();
@@ -119,8 +124,10 @@ add_option('file_manger_defaultcat','misc');
 add_option('file_manger_upgrade','1');
 	
 
-//$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
-//$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
+$wp_roles->add_cap( 'administrator', 'manage_userfiles' );
+$wp_roles->add_cap( 'administrator', 'manage_userfiles_settings' ); 
+}
+
 
 }
 
@@ -1067,26 +1074,33 @@ $currOpts_credits = get_option('file_manger_credit');
 		global $current_user;
 			  get_currentuserinfo();
               
+if (isset($_GET['deletefile'])){
+
+$theDel_file=$_GET['deletefile'];
+
+$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$theDel_file);
+
+$toUsFl=explode ( "/" , $theDel_file );
 
 
-		if (isset($_GET['deletefile'])){
-		
+$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
+	
+		if ($isitGone) {
 
-		$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/'.$_GET['deletefile']);
-
-				if ($isitGone) {
-
-				echo '<div id="message" class="updated">';
-				echo "The file has been deleted";
-				echo '</div>';
-				} else{
-				echo '<div id="message" class="error">';
-				echo "There was an error deleting the file, please try again!";
-				echo '</div>';
-				}
+		echo '<div id="message" class="updated">';
+		echo __('The file has been deleted','userfiles');
+		echo '</div>';
+		} else{ 
+		echo '<div id="message" class="error">';
+		echo __('There was an error deleting the file, please try again!','userfiles');
+		echo '</div>';
 		}
-        
-                  
+		
+		
+  	
+}
+
+	            
 			
 			if($_POST['sorted']){
 			
@@ -1362,45 +1376,73 @@ if (isset($_GET['theDLfile'])){
 		$upload_dir = wp_upload_dir();
 		global $current_user;
 			  get_currentuserinfo();
-              
+ $theDLfile=$_GET['theDLfile'];
+
+$theDLfile_array=explode("/",$theDLfile);
+
+$num=count($theDLfile_array);
+
+if($num==1)
+{
+$file = $_GET['theDLfile'];
+
+$url=$upload_dir['baseurl'].'/file_uploads/'.$current_user->ID .'/';
+
+}
+else
+{
+$file = $theDLfile_array[1];
+
+$url=$upload_dir['baseurl'].'/file_uploads/'.$theDLfile_array[0] .'/';
+}
 	
-	$file = $_GET['theDLfile'];
-	$url=$upload_dir['baseurl'].'/file_uploads/'.$current_user->ID .'/';
- 
+
  if(!file)
  {
-     die(__('file not found'));
+     die(__('file not found'));   
  }
  else
  {
 
  $filePTH = str_replace(" ","%20",$file);
  $fileNM = str_replace(" ","_",$file);
+  
  
-    
-     header("Cache-Control: public");
-     header("Content-Description: File Transfer");
-     header("Content-Disposition: attachment; filename=".  $fileNM);
-     header("Content-Type: application/octet-stream");
-     header("Content-Transfer-Encoding: binary");
-     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    ob_clean();
-    flush();
+    header('Content-Description: File Transfer');
+    header ('Content-Disposition:attachment; filename='.$fileNM); 
+     
+     
 
-         readfile($url.'/'.$filePTH);
- }
+    if (isset($_SERVER['HTTP_USER_AGENT']) && 
+    (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
+    header("Content-Type: application/octet-stream");  
+    header("Cache-control: ");
+    header("Pragma: ");
+    }ELSE{
+    header("Content-Type: application/force-download");
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public'); 
+    }
+
+    header('Content-Length: ' . filesize( $filePTH));
+    ob_end_clean();
+    flush();
+    @readfile($url.'/'.$filePTH) or die("File not found."); 
+    //readfile($file);
+    exit;
+ 
+ 
+ 
+
+        }
 	
 
 	     	
-	
-	}
-return; 
+    return; 
 
-}
+    }
 
-
+} 
 
 
 function userfiles_header(){
@@ -1531,7 +1573,7 @@ unset($err2);
 				
 				}
 					
-}
+} 
 
 /*Delete Icon */
 if (isset($_GET['deleteicon'])){
@@ -1660,7 +1702,11 @@ return 'User File Manger created by <a href="http://www.whereyoursolutionis.com"
 }
 
 
+function getDeleted($aVars) {
+    $aVars[] = "deletefile";    
+    return $aVars;
 
+}
 
 
 ?>

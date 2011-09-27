@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-17 22:09-0500\n"
-"PO-Revision-Date: 2011-09-17 22:09-0500\n"
+"POT-Creation-Date: 2011-09-27 17:47-0500\n"
+"PO-Revision-Date: 2011-09-27 17:47-0500\n"
 "Last-Translator: Scriptonite <Tom@whereyoursolutionis.com>\n"
 "Language-Team: Innovative Solutions <Sales@whereyoursolutionis.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,126 +15,126 @@ msgstr ""
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SearchPath-0: C:\\Users\\Tom\\AppData\\Roaming\\Notepad++\\plugins\\config\\NppFTP\\Cache\\scriptonite.net@ftp.scriptonite.net\\htdocs\\wp-content\\plugins\\user-files\n"
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:181
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:742
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:199
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:768
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:168
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:733
 msgid "No Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:197
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:215
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:184
 msgid "User Files Settings"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:197
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:570
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:215
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:596
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:184
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:561
 msgid "User Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:199
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:217
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:235
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:186
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:204
 msgid "Manage Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:201
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:407
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1237
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:219
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:425
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1293
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:188
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:385
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1221
 msgid "Add Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:203
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:221
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:190
 msgid "Categories"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:205
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:223
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:192
 msgid "Manage Icons"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:207
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:225
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:194
 msgid "FTP Paths"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:210
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:228
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:197
 msgid "Help"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:247
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:387
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1091
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:265
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:413
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1147
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:229
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:378
 msgid "The file has been deleted"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:251
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:391
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1095
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:269
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:417
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1151
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:233
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:382
 msgid "There was an error deleting the file, please try again!"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:288
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:306
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:266
 msgid "An adminisrator has successfully been notified of your upload."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:295
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:999
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1516
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:313
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1050
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1582
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:273
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:990
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1471
 msgid "There was an error uploading the file, please try again!"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:322
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:517
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1134
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:340
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:543
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1190
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:300
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:508
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1118
 msgid "or"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:325
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:520
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1137
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:343
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:546
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1193
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:303
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:511
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1121
 msgid "Show all categories"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:383
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1215
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:401
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1271
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:361
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1199
 msgid "No files found for"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:387
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1219
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:405
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1275
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:365
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1203
 msgid "Nothing found for category"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:393
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1224
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1339
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:411
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1280
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1395
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/widget.php:49
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:371
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1208
@@ -143,13 +143,13 @@ msgstr ""
 msgid "You have no files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:419
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:437
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:397
 msgid "Choose a file to upload, your upload limit is"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:446
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1276
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:464
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1332
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/widget.php:150
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:424
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1260
@@ -157,144 +157,152 @@ msgstr ""
 msgid "Upload File"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:537
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:555
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:514
 msgid "A new file at"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:537
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:555
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:514
 msgid "has just uploaded"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:537
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:555
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:514
 msgid "to category"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:538
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:556
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:515
 msgid "An administrator has successfully been notified of your upload."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:545
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:563
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/functions.php:522
 msgid "Error with file upload"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:563
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/functions.php:581
 msgid "User Files has been updated, if you experience any issues please deactivate and reactivate the plugin"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:198
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:417
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:201
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:443
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:189
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:408
 msgid "The folder has been deleted"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:202
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:421
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:205
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:447
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:193
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:412
 msgid "There was an error deleting the folder, please try again!"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:217
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:220
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:208
 msgid "File Manager Options"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:229
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:232
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:220
 msgid "This will delete all files, folders, categories, icons, etc. Are you sure you want to do this?"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:230
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:233
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:221
 msgid "Yes"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:230
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:233
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:221
 msgid "No"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:299
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:309
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:290
 msgid "Settings Saved"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:315
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:327
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:306
 msgid "Show Dashboard Widget"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:319
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:331
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:310
 msgid "Show dashboard menu link"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:322
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:334
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:313
 msgid "Allow users to add files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:325
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:337
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:316
 msgid "Allow users to delete files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:329
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:341
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:320
 msgid "Show credit link on user page? Not expected, but certainly appreciated!"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:329
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:341
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:320
 msgid "All other banners and ads are visible to user file admins only."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:337
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:349
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:328
 msgid "Send email upload notifcations to"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:337
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:349
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:328
 msgid "leave blank to not be notified of uploads"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:343
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:353
+msgid "User File Manager supports custom email notifications to be sent out when you upload a file for a user. Variables allowed are"
+msgstr ""
+
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:357
+msgid "Email Subject"
+msgstr ""
+
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:369
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:334
 msgid "Save Options"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:359
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:385
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:350
 msgid "Uninstall User File Manager"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:470
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:496
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:461
 msgid "Categories have been changes successfully"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:474
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:500
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:465
 msgid "There was an error changing"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:536
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:562
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:527
 msgid "For all users"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:630
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:701
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:718
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:772
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:833
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:656
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:727
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:744
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:798
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:859
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:621
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:692
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:709
@@ -303,11 +311,11 @@ msgstr ""
 msgid "User Login"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:630
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:701
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:718
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:772
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:833
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:656
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:727
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:744
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:798
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:859
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:621
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:692
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:709
@@ -316,11 +324,11 @@ msgstr ""
 msgid "User Name"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:630
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:701
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:718
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:772
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:833
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:656
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:727
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:744
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:798
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:859
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:621
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:692
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:709
@@ -329,163 +337,167 @@ msgstr ""
 msgid "Delete Folder"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:683
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:709
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:674
 msgid "No Files Found"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:746
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:772
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:737
 msgid "No files found"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:794
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:820
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:785
 msgid "No files found for this user in category"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:877
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:903
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:868
 msgid "is the default category. You cannot delete this unless you change the default category."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:892
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:918
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:883
 msgid "This is already a cataegory."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:902
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:928
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:893
 msgid " has been added"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:906
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:932
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:897
 msgid "There was an error adding the category"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:920
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:946
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:911
 msgid "is now default"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:968
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:994
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:959
 msgid "Upload Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:994
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1045
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:985
 msgid "The file "
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:995
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1046
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:986
 msgid "has been uploaded to "
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1014
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1065
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1005
 msgid "Files for user"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1249
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1103
+msgid "Notify User of Upload"
+msgstr ""
+
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1305
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/widget.php:123
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1233
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/widget.php:123
 msgid "Choose a file to upload, your upload limit is "
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1284
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1340
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1268
 msgid "You must be logged in to view files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1305
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1361
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1289
 msgid "Your Files"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1330
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1386
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1314
 msgid "Download"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1402
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1458
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1371
 msgid "file not found"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1505
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1571
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1460
 msgid "The file"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1505
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1571
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1460
 msgid "has been uploaded"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1536
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1602
 msgid "Extension already exists, please delete the current extension set before uploading a new one."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1571
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1637
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1526
 msgid "You must have both a file and extension"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1585
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1651
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1540
 msgid "File Deleted"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1590
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1656
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1545
 msgid "There was an error deleting this extension"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1599
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1665
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1554
 msgid "Icons"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1616
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1682
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1571
 msgid "New Icon"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1617
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1683
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1572
 msgid "Upload Icon file"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1622
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1688
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1577
 msgid "Extension"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1624
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1690
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1579
 msgid "Add"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1644
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1710
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1599
 msgid "Files can be uploaded to the users folder via FTP as well as through the upload page. If the users has no folder press create folder to create the users file folder."
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1658
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1724
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1613
 msgid "User Paths for FTP upload"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1658
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1724
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1613
 msgid "User files folder is located"
 msgstr ""
 
-#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1658
+#: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/user_files.php:1724
 #: C:\Users\Tom\AppData\Roaming\Notepad++\plugins\config\NppFTP\Cache\scriptonite.net@ftp.scriptonite.net\htdocs\wp-content\plugins\user-files/2.0.3/user_files.php:1613
 msgid "Folder Number"
 msgstr ""

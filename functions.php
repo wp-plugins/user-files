@@ -15,6 +15,22 @@ return $protocol . "://" . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_U
 
  
 }
+################
+# Timestamp    #
+############3###
+
+function GetTimeStamp($tFilePath, $tUserID) {
+
+$upload_dir = wp_upload_dir();
+$absPt=$upload_dir['basedir'].'/file_uploads/'.$tUserID;
+$FileForTime = pathinfo($tFilePath, PATHINFO_BASENAME);
+
+$retDate = date ("F d Y", filemtime($absPt.'/'.$FileForTime));
+
+return $retDate;
+
+}
+
 
 ##########################
 # List User Files       #
@@ -27,9 +43,9 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
 		$tExt =  SetIcon($ext);
 		
 								
-		echo '<td class="'.$TheClass.'" width="70%" ><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
+		echo '<td class="'.$TheClass.'" width="60%" ><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
 		
-		
+		echo '<td class="'.$TheClass.'" >'. GetTimeStamp($Thefile,$userID)  .'</td>';
 		
 		    echo '<td class="'.$TheClass.'">';
 					$currOpts_defcat = get_option('file_manger_defaultcat');
@@ -86,13 +102,15 @@ function ListFilteredFiles($Thefile,$userID) {
 global $wpdb;
 global $tp;	
 global $wp_query;
-		
+$upload_dir = wp_upload_dir();		
 		$ext = pathinfo($Thefile, PATHINFO_EXTENSION);
 		  
 		$tExt =  SetIcon($ext);
 		
 								
-		echo '<tr><td  width="70%" ><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$Thefile.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
+		echo '<tr><td  width="60%" ><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$Thefile.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
+        
+        echo '<td>'.GetTimeStamp($Thefile,$userNum)   .'</td>';
 		
 		
 		
@@ -124,7 +142,7 @@ global $wp_query;
 		echo '</td></tr>';
 		
 		}//end if
-$tp++;
+$tp++; 
 }
 
 
@@ -151,7 +169,7 @@ if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 								echo '<td><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$files.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"> <img src="'. $tExt.'" width="20" >   '.pathinfo($files, PATHINFO_FILENAME).'</td>';
 								
 						
-						
+				echo '<td>'. GetTimeStamp($files,$userNum) .'</td>';		
 												
 						echo '<td>';
                           $currOpts_defcat = get_option('file_manger_defaultcat');
@@ -193,7 +211,7 @@ if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 
 
 function show_FM_pages() {
-
+ 
     add_options_page(__('User Files Settings','userfiles'), __('User Files','userfiles'), 'manage_options', 'file_manager_options', 'files_settings_page' );
 
 	add_menu_page( __('Manage Files','userfiles'), __('Manage Files','userfiles'), 'manage_options', 'manage-files-main', 'manage_files_mainpg');
@@ -344,7 +362,7 @@ echo '</select>   ';
 	
 
 		echo '<table class = "widefat" width="100%">';	
-		echo'<thead><th>Your Files</th><th>Category</th><th></th></thead>';
+		echo'<thead><th>Your Files</th><Date</th><th>Category</th><th></th></thead>';
 			if ($handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
 			$rowClass='';
 			unset($found);
@@ -557,12 +575,12 @@ if (isset($_POST['addfiles'])){
 function verifyInstall(){
 
 $isInstallOK=get_option('file_manger_upgrade');
-if ($isInstallOK!='1'){
+if ($isInstallOK!='2'){
 
 ActivateFileDir(); 
 echo '<div id="messages" class="updated highlight">'.__('User Files has been updated, if you experience any issues please deactivate and reactivate the plugin').'</div>';
 
-update_option('file_manger_upgrade','1');
+update_option('file_manger_upgrade','2');
     
     }
 

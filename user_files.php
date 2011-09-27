@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.1.2
+Version: 2.1.3 
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -121,7 +121,10 @@ add_option('file_manger_allow_up', 'no');
 add_option('file_manger_notify', '');
 add_option('file_manger_credit');
 add_option('file_manger_defaultcat','misc');
-add_option('file_manger_upgrade','1');
+add_option('file_manger_upgrade','2');
+add_option('userfiles_email_subject','New File Upload');
+add_option('userfiles_email_message','You have a new file upload. The file is %filename% and has been added to your %category% category.');
+
 	
 
 $wp_roles->add_cap( 'administrator', 'manage_userfiles' );
@@ -258,8 +261,8 @@ $currOpts_credits=get_option('file_manger_credit');
 	
 		update_option('file_manger_dashcats',$_POST['file_manger_dashcats'] );
 		
-	}
-	
+	} 
+	 
 	if($_POST['file_manger_dashcount'] != $currOpts_menu ) {
 
 		update_option('file_manger_dashcount',$_POST['file_manger_dashcount'] );
@@ -294,7 +297,14 @@ $currOpts_credits=get_option('file_manger_credit');
 		update_option('file_manger_notify',$_POST['file_manger_notify'] );
 	}
 	
-
+if($_POST['userfiles_email_subject'] ) { 
+		update_option('userfiles_email_subject',$_POST['userfiles_email_subject'] );
+	}
+    
+    if($_POST['userfiles_email_message'] ) { 
+		update_option('userfiles_email_message',esc_attr($_POST['userfiles_email_message']) );
+	}
+	
 	
 	echo '<div id="message" class="updated fade">'.__('Settings Saved','userfiles').'</div>';
 	
@@ -306,6 +316,8 @@ $currOpts_up = get_option('file_manger_allow_up');
 $currOpts_del = get_option('file_manger_allow_del');
 $currOpts_notify = get_option('file_manger_notify');
 $currOpts_credits = get_option('file_manger_credit');
+$currOpts_email_Sub=get_option('userfiles_email_subject');
+$currOpts_email_mes=get_option('userfiles_email_message');
 
  ?>
  <table class="form-table">
@@ -337,7 +349,21 @@ $currOpts_credits = get_option('file_manger_credit');
 	<td><?php echo __('Send email upload notifcations to','userfiles'); ?><input type="text" name="file_manger_notify" value="<?php echo $currOpts_notify; ?>" size="40"><br /> <em><?php echo '('.__('leave blank to not be notified of uploads','userfiles').')'; ?> </em><br></td>
     </tr> 
 	
-	
+    <tr><td>
+     <?php echo __('User File Manager supports custom email notifications to be sent out when you upload a file for a user. Variables allowed are','userfiles'); ?> <br />
+    
+    <b><i>%user_first%,%user_last%,%user_login%,%filename%,%category%</i></b><br />
+    </td></tr><tr><td>
+      <?php echo __('Email Subject','userfiles'); ?>:<input type="text" name="userfiles_email_subject" value="<?php echo $currOpts_email_Sub; ?>" />
+    
+    </td></tr>
+    
+    <tr><td>
+    <textarea name="userfiles_email_message" rows="15" cols="50" > <?php echo $currOpts_email_mes; ?> </textarea>
+    </td></tr>
+    
+    
+	 
 	<tr><td>
 	<input type="hidden" name ="update" value="update">
 	<input type="submit" value="<?php echo __('Save Options','userfiles'); ?>" class="button-secondary" /></td>
@@ -627,7 +653,7 @@ while ( ($file = readdir($handle))!== false) {
 								$userNum=(int)$file;
 								$user_info = get_userdata($userNum); 
 								echo '<thead>';
-								echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th width="20%">Category</th>';
+								echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
 								echo '<th width 10"%"></th></thead>'; 
 																					
 								}
@@ -698,7 +724,7 @@ echo'</h3>';
 				$userNum=(int)$SortByUser;
 				$user_info = get_userdata($userNum); 
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th width="20%">Category</th>';
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
 				echo '<th width 10"%"></th></thead>'; 
 				
 								
@@ -715,7 +741,7 @@ echo'</h3>';
 				$user_info = get_userdata($userNum);
 				echo '<table class="widefat" >';				
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th width="20%">Category</th>';
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
 				echo '<th width 10"%"></th></thead>'; 
 				 unset($found);
 				 if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
@@ -769,7 +795,7 @@ echo'</h3>';
 									$userNum=(int)$file;
 									$user_info = get_userdata($userNum); 
 									echo '<thead>';
-									echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th width="20%">Category</th>';
+									echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
 									echo '<th width 10"%"></th></thead>'; 
 									
 		if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {							
@@ -830,7 +856,7 @@ while ( ($file = readdir($handle))!== false) {
 				$userNum=(int)$file;
 				$user_info = get_userdata($userNum); 
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th width="20%">Category</th>';
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
 				echo '<th width 10"%"></th></thead>'; 
 				
 								
@@ -990,7 +1016,32 @@ $upload_dir = wp_upload_dir();
 	
 	$wpdb->insert( $wpdb->prefix . "userfile_cats", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
 	
-		echo '<div id="message" class="updated">';
+		
+        
+        if ($_POST['notify_user'] == 'checked') {
+        
+     $user_info = get_userdata($subDir);   
+
+
+$usermailsubject = get_option('userfiles_email_subject');
+$usermail = get_option('userfiles_email_message');
+$usermail = str_ireplace('%user_first%',$user_info->first_name,$usermail);
+$usermail = str_ireplace('%user_last%',$user_info->last_name,$usermail);
+$usermail = str_ireplace('%user_login%',$user_info->user_login,$usermail);
+$usermail = str_ireplace('%filename%',basename( $_FILES['uploadedfile']['name']),$usermail);
+$usermail = str_ireplace('%category%',$_POST['curr_cat'],$usermail); 
+//$usermail = str_ireplace('%','',$usermail); 
+
+ 
+
+        
+        wp_mail($user_info->user_email, $usermailsubject,$usermail,'From:'.get_option('blogname').'<'.get_option('admin_email').'>');
+        
+        
+        
+        }
+        
+        echo '<div id="message" class="updated">';
 		echo __("The file ",'userfiles').  basename( $_FILES['uploadedfile']['name']).' '. 
 		__("has been uploaded to ",'userfiles').$_POST['curr_cat'];
 		echo '</div>';
@@ -1022,7 +1073,7 @@ $aUsersID = $wpdb->get_col("SELECT ID FROM $wpdb->users ORDER BY $order");
 <?php
 endforeach;
 echo '</select><br /><p>';
-
+ 
 $max_post = (int)(ini_get('post_max_size'));
 
 ?>
@@ -1049,6 +1100,11 @@ Choose a file to upload, your upload limit is <?php echo $max_post; ?>M <br /> <
 				 </td></tr>
 				 
 				 <tr><td>
+                 <?php echo __('Notify User of Upload','userfiles'); ?>:<input type="checkbox" name="notify_user" value="checked" /></td></tr>
+                 
+                 <tr><td> </td></tr>
+                 
+                 <tr><td>
 
 <input type="submit" value="Upload File" />
 </form>
@@ -1156,7 +1212,7 @@ echo '</select>   ';
 	
 <?php	
 		echo '<table class = "user_files" width="100%">';	
-		echo'<thead><th>Your Files</th><th>Category</th><th></th></thead>';
+		echo'<thead><th>Your Files</th><th>Date</th><th>Category</th><th></th></thead>';
 			if ($handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
 			$rowClass='even_files';	
 			unset($found);
@@ -1291,7 +1347,7 @@ echo '<p>&nbsp;</p><p>'.userfiles_credit().'</p>';
 }
 $sFileManger = ob_get_clean();
 	return $sFileManger;
-
+  
 }
 
 ####################################

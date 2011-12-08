@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable Tag:2.1.3
+Stable Tag:2.2.0 
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -80,3 +80,11 @@ Files can have icons and category, both are customizable.  Users and admins can 
 =2.1.1=
 *Added email notification option to notify users of uploaded files.
 *Added a date column to show the date the file was uploaded (ftp or wordpress)
+
+=2.1.5=
+*Added a new fix for downloads thnaks to dev123
+
+=2.2.0=
+*New download function written which seems to fix any and all corrupt downloads
+
+

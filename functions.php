@@ -3,10 +3,6 @@
 
 
 function curPageName() {
- //return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
- 
-//$url = $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
- //return $url .'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
 $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
@@ -128,7 +124,7 @@ $upload_dir = wp_upload_dir();
 		
 		
 		
-		echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$Thefile.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';
+		echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$userID.'/'.$Thefile.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';
 		
 		
 		
@@ -187,7 +183,7 @@ if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 						echo'</td>';	
 		
 																
-						echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$files.'">     <img title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>   |   <a href="admin.php?page=manage-files-main&deletefile='.$userNum.'/'.$files.'">     <img title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a></td>';
+						echo '<td align="right"><a rel="download.png" href="admin.php?page=manage-files-main&theDLfile='.$userNum.'/'.$files.'">     <img title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>   |   <a href="admin.php?page=manage-files-main&deletefile='.$userNum.'/'.$files.'">     <img title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a></td>';
 						
 					  $tp++;
 								}

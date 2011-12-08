@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.1.3 
+Version: 2.2.0
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -1432,86 +1432,152 @@ if (isset($_GET['theDLfile'])){
 		$upload_dir = wp_upload_dir();
 		global $current_user;
 			  get_currentuserinfo();
- $theDLfile=$_GET['theDLfile'];
+ 
 
-$theDLfile_array=explode("/",$theDLfile);
-
-$num=count($theDLfile_array);
-
-if($num==1)
-{
-$file = $_GET['theDLfile'];
-
-$url=$upload_dir['baseurl'].'/file_uploads/'.$current_user->ID .'/';
-
-}
-else
-{
-$file = $theDLfile_array[1];
-
-$url=$upload_dir['baseurl'].'/file_uploads/'.$theDLfile_array[0] .'/';
-}
+			  
+	$theDLfile=$_GET['theDLfile'];		  
+			  
+    $theDLfile_array=explode("/",$theDLfile);	  
 	
-
- if(!file)
- {
-     die(__('file not found'));   
- }
- else
- {
- 
-
- $filePTH = str_replace(" ","%20",$file);
- $fileNM = str_replace(" ","_",$file);
-
-
- 
- 
+    $num=count($theDLfile_array);
     
 
-    if (isset($_SERVER['HTTP_USER_AGENT']) && 
-    (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) {
     
-	$file_extension = strtolower(substr(strrchr($url.'/'.$fileNM ,"."),1));
-            if ($file_extension == 'pdf') {
-                 header("Content-Type: application/pdf");
-				 @readfile($url.'/'.$filePTH) or die("File not found.");  
-				
-				}else{	
-				header ('location:'.$url.'/'.$filePTH); 
-			   }
-     
-    }else{
-	header('Content-Description: File Transfer');
-    header("Content-Type: application/force-download");
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public'); 
-    header ('Content-Disposition:attachment; filename='.$fileNM); 
-    header('Content-Length: ' . (filesize($filePTH)));
-    ob_end_clean();
-    flush();
-    @readfile($url.'/'.$filePTH) or die("File not found."); 
-    exit; 
-
-    } 
-    
-    
- 
- 
- 
-
-        }
-	
-
-	     	
-    return; 
-
+    if($num==1)
+    {
+       $file = $_GET['theDLfile'];	
+       
+       $url=$upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/';
+       
     }
+    else 
+    {
+    	$file = $theDLfile_array[1];
+    	
+    	$url=$upload_dir['basedir'].'/file_uploads/'.$theDLfile_array[0] .'/';
+    }
+	
 
-} 
+	
+	set_time_limit(0);
+
+output_file($url.$file, $file, '');
+	
+	
+	   	
+	
+	}
+return; 
+
+
+
+}
+
+/*DOWNLOAD FUNCTION */
+
+function output_file($file, $name, $mime_type='')
+{
+
+ if(!is_readable($file)) die('File not found or inaccessible!<br />'.$file.'<br /> '.$name);
+ 
+ $size = filesize($file);
+ $name = rawurldecode($name);
+ 
+ $known_mime_types=array(
+    "pdf" => "application/pdf",
+    "txt" => "text/plain",
+    "html" => "text/html",
+    "htm" => "text/html",
+    "exe" => "application/octet-stream",
+    "zip" => "application/zip",
+    "doc" => "application/msword",
+    "xls" => "application/vnd.ms-excel",
+    "ppt" => "application/vnd.ms-powerpoint",
+    "gif" => "image/gif",
+    "png" => "image/png",
+    "jpeg"=> "image/jpg",
+    "jpg" =>  "image/jpg",
+    "php" => "text/plain"
+ );
+ 
+ if($mime_type==''){
+     $file_extension = strtolower(substr(strrchr($file,"."),1));
+     if(array_key_exists($file_extension, $known_mime_types)){
+        $mime_type=$known_mime_types[$file_extension];
+     } else {
+        $mime_type="application/force-download";
+     };
+ };
+ 
+ @ob_end_clean(); //turn off output buffering to decrease cpu usage
+ 
+ // required for IE, otherwise Content-Disposition may be ignored
+ if(ini_get('zlib.output_compression'))
+  ini_set('zlib.output_compression', 'Off');
+ 
+ header('Content-Type: ' . $mime_type);
+ header('Content-Disposition: attachment; filename="'.$name.'"');
+ header("Content-Transfer-Encoding: binary");
+ header('Accept-Ranges: bytes');
+ 
+ /* The three lines below basically make the
+    download non-cacheable */
+ header("Cache-control: private");
+ header('Pragma: private');
+ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+ 
+ // multipart-download and download resuming support
+ if(isset($_SERVER['HTTP_RANGE']))
+ {
+    list($a, $range) = explode("=",$_SERVER['HTTP_RANGE'],2);
+    list($range) = explode(",",$range,2);
+    list($range, $range_end) = explode("-", $range);
+    $range=intval($range);
+    if(!$range_end) {
+        $range_end=$size-1;
+    } else {
+        $range_end=intval($range_end);
+    }
+ 
+    $new_length = $range_end-$range+1;
+    header("HTTP/1.1 206 Partial Content");
+    header("Content-Length: $new_length");
+    header("Content-Range: bytes $range-$range_end/$size");
+ } else {
+    $new_length=$size;
+    header("Content-Length: ".$size);
+ }
+ 
+ /* output the file itself */
+ $chunksize = 1*(1024*1024); //you may want to change this
+ $bytes_send = 0;
+ if ($file = fopen($file, 'r'))
+ {
+    if(isset($_SERVER['HTTP_RANGE']))
+    fseek($file, $range);
+ 
+    while(!feof($file) &&
+        (!connection_aborted()) &&
+        ($bytes_send<$new_length)
+          )
+    {
+        $buffer = fread($file, $chunksize);
+        print($buffer); //echo($buffer); // is also possible
+        flush();
+        $bytes_send += strlen($buffer);
+    }
+ fclose($file);
+ } else die('Error - can not open file.');
+ 
+die();
+}   
+
+
+
 
 
 function userfiles_header(){
+
 	if(current_user_can('manage_options')){
 		$adtent = file_get_contents('http://www.whereyoursolutionis.com/ads/userfiles.html');
 	echo $adtent;

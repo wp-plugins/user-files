@@ -36,7 +36,7 @@ function ActivateFileDir() {
 
 $isInstallOK=get_option('file_manger_upgrade');
 
-if($isInstallOK!='1'){
+if($isInstallOK!='2'){
 global $wpdb;
 global $wp_roles;
 $upload_dir = wp_upload_dir();

@@ -1409,13 +1409,22 @@ userfiles_header();   ?>
 <tr><td> 
 To allow users to upload files or delete files go to the <a href="options-general.php?page=file_manager_options">options page</a> and check the appropriate options.<br /><p>
 
-The options to enable the File manager page and dashboard widgets are in the <a href="options-general.php?page=file_manager_options">options</a>.  The File Manager users menu item is only available in the admin area. If you wish to show the user the file list in your page you can use the shorcode.  If you have options selected for the user upload and/or delete files these options will be available on the page as well. </td></tr>
+The options to enable the File manager page and dashboard widgets are in the <a href="options-general.php?page=file_manager_options">options</a>.  The File Manager users menu item is only available in the admin area. If you wish to show the user the file list in your page you can use the shortcode.  If you have options selected for the user upload and/or delete files these options will be available on the page as well. </td></tr>
 
-<tr> <td>More information and documentation can be found <a href="http://www.whereyoursolutionis.com/wordpress-pluginsuser-files/">here.</a></td></tr>
+<tr>The sidebar widget can be placed in any area that supports widgets and will list all the files available to the logged in user. No options are available for the widget. </tr>
+
+<tr> In the <a href="options-general.php?page=file_manager_options">options section </a>you can customize an email message to send to users to notify them of an uploaded file.  When you upload a file there is a checkbox that controls wether or not the user is notfified of the file</tr>
+
+
+<tr> <td>More information and documentation can be found <a href="http://www.whereyoursolutionis.com/user-files-plugin/">here.</a></td></tr>
 
 <tr><td>Shortcode for use in template page: [user_file_manager] </td></tr>
 
 <tr>
+
+
+
+</tr>
 </table>
 
 

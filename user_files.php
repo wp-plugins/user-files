@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: User File Manager
-Plugin URI: "http://www.whereyoursolutionis.com/user-files-plugin/
+Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
 Version: 2.2.0

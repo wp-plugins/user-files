@@ -351,14 +351,16 @@ echo '<option value="'.$breakfast->category.'">'. $breakfast->category .'</optio
 echo '</select>   ';
 	?>
 
-<input type="submit" name="sorted" value="Filter" /> 
+<input type="submit" name="sorted" value="<?php _e('Filter','userfiles');?>" /> 
 	
 	</form>
 	<?php
 	
 
 		echo '<table class = "widefat" width="100%">';	
-		echo'<thead><th>Your Files</th><Date</th><th>Category</th><th></th></thead>';
+		echo'<thead><th>';
+        echo __('Your Files','userfiles');
+        echo '</th><Date</th><th>Category</th><th></th></thead>';
 			if ($handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
 			$rowClass='';
 			unset($found);
@@ -571,12 +573,11 @@ if (isset($_POST['addfiles'])){
 function verifyInstall(){
 
 $isInstallOK=get_option('file_manger_upgrade');
-if ($isInstallOK!='2'){
+if ($isInstallOK!=$installVersion){
 
 ActivateFileDir(); 
-echo '<div id="messages" class="updated highlight">'.__('User Files has been updated, if you experience any issues please deactivate and reactivate the plugin').'</div>';
 
-update_option('file_manger_upgrade','2');
+update_option('file_manger_upgrade',$installVersion);
     
     }
 

@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.2.0
+Version: 2.2.1
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -366,7 +366,7 @@ $currOpts_email_mes=get_option('userfiles_email_message');
 	 
 	<tr><td>
 	<input type="hidden" name ="update" value="update">
-	<input type="submit" value="<?php echo __('Save Options','userfiles'); ?>" class="button-secondary" /></td>
+	<input type="submit" value="<?php _e('Save Options','userfiles'); ?>" class="button-secondary" /></td>
 
 </form>
 	
@@ -537,7 +537,7 @@ $dir = $_GET['deletefolder'].'/';
 <form method="POST" action="admin.php?page=manage-files-main" >
 
 <input type="text" size ="60" name="file_search" value="" />
-<input type="submit" value="Search for File" /> 
+<input type="submit" value="<?php _e('Search for File','userfiles');?>" /> 
 
 
    <b>----   <?php _e('or'); ?>   ----</b>
@@ -585,7 +585,7 @@ echo '</option>';
 echo '</select>';
 ?>
 
-<input type="submit" name ="catsnuser" value="Filter" />
+<input type="submit" name ="catsnuser" value="<?php _e('Filter','userfiles'); ?>" />
 
 
 
@@ -611,7 +611,7 @@ echo '<option value="'.$breakfast->category.'">'. $breakfast->category .'</optio
 }
 ?>
 
-<input type="submit" name ="change-em" value="Change" />
+<input type="submit" name ="change-em" value="<?php _e('Change','userfiles');?>" />
 <?php
  
 echo '</select>';
@@ -980,7 +980,7 @@ echo '</table>';
 ?>
 <form method="POST" action="admin.php?page=files-add-cats">
 <input type="text" id="addcat" value="<?php if($err==1){echo $_POST['addcat'];} ?>" name="addcat" />
-<input type="submit" name="submit" value="Add Category" />
+<input type="submit" name="submit" value="<?php _e('Add Category','userfiles');?>" />
 </form>
 
 
@@ -1062,7 +1062,7 @@ $usermail = str_ireplace('%category%',$_POST['curr_cat'],$usermail);
 $order = 'user_nicename';
 $aUsersID = $wpdb->get_col("SELECT ID FROM $wpdb->users ORDER BY $order");
 
-	echo __('Files for user','userfies').': <br /><select name="curr_user" id="curr_user">';
+	echo __('Files for user','userfiles').': <br /><select name="curr_user" id="curr_user">';
 	foreach ( $aUsersID as $iUserID ) :
 	
 	$user_info = get_userdata( $iUserID );  ?>
@@ -1106,7 +1106,7 @@ Choose a file to upload, your upload limit is <?php echo $max_post; ?>M <br /> <
                  
                  <tr><td>
 
-<input type="submit" value="Upload File" />
+<input type="submit" value="<?php _e('Upload File','userfiles');?>" />
 </form>
 </td></tr>
 </table>
@@ -1205,7 +1205,7 @@ echo '<option value="'.$breakfast->category.'">'. $breakfast->category .'</optio
 echo '</select>   ';
 	?>
 
-<input type="submit" name="sorted" value="Filter" /> 
+<input type="submit" name="sorted" value="<?php _e('Filter','userfiles');?>" /> 
 	
 	</form>
 	
@@ -1819,7 +1819,8 @@ $aUsersID = $wpdb->get_col( $wpdb->prepare(
 
 				if (!$isFolder) {
 				
-				echo '<td><form method="POST" action="admin.php?page=files-see-ftp"><input type="hidden" name="createFolder" value="'.$iUserID.'" /><input type="submit" value="Create Folder" /></form></td></tr>';				
+				echo '<td><form method="POST" action="admin.php?page=files-see-ftp"><input type="hidden" name="createFolder" value="'.$iUserID.'" /><input type="submit" value="';echo __('Create Folder','userfiles');
+                echo'" /></form></td></tr>';				
 				
 				}else{
 				echo '<td>'.$iUserID.'</td></tr>';

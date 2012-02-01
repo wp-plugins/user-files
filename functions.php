@@ -1,8 +1,8 @@
 <?php
 
+ 
 
-
-function curPageName() {
+function curPageName() { 
 
  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
 $protocol = substr(strtolower($_SERVER["SERVER_PROTOCOL"]), 0, strpos(strtolower($_SERVER["SERVER_PROTOCOL"]), "/")) . $s;
@@ -572,13 +572,15 @@ if (isset($_POST['addfiles'])){
 
 function verifyInstall(){
 
+global $instalVersion;
+
 $isInstallOK=get_option('file_manger_upgrade');
-if ($isInstallOK!=$installVersion){
+if ($isInstallOK!=$instalVersion){
 
 ActivateFileDir(); 
 
-update_option('file_manger_upgrade',$installVersion);
-    
+update_option('file_manger_upgrade',$instalVersion);
+
     }
 
 

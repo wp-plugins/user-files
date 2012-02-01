@@ -21,6 +21,8 @@ add_filter('query_vars', 'getDeleted');
 
 add_action( 'init', 'userfiles_textdomain' );
 
+$instalVersion=4;
+
 function userfiles_textdomain() {
 
 load_plugin_textdomain( 'userfiles', false, 'user-files/lang/' );
@@ -33,10 +35,10 @@ require(ABSPATH . 'wp-content/plugins/user-files/functions.php');
 
 	
 function ActivateFileDir() {
-
+global $instalVersion;
 $isInstallOK=get_option('file_manger_upgrade');
 
-if($isInstallOK!='2'){
+if($isInstallOK!=$instalVersion){
 global $wpdb;
 global $wp_roles;
 $upload_dir = wp_upload_dir();
@@ -56,31 +58,38 @@ chmod($upload_dir['basedir'].'/userfile_icons', 0777);
 }
 
 
-$table_name = $wpdb->prefix . "userfile_icons";
-   if($wpdb->get_var("show tables like ".$table_name) != $table_name) {
+   if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_icons") != $wpdb->prefix . "userfile_icons") {
       
        
-   $sql1 = "CREATE TABLE IF NOT EXISTS " . $table_name . "(  
+   $sql1 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_icons(  
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   extension varchar(10) NOT NULL UNIQUE,
   image varchar (500) NOT NULL
     );"; 
-  
+ }
+
+    if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_category") != $wpdb->prefix . "userfile_category") {
+
 	
      $sql2 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_category(  
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	category varchar(10) NOT NULL,
     UNIQUE (category)
      );"; 
+     
+     }
+     
+      if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_cats") != $wpdb->prefix . "userfile_cats") {
+   
 	
 	$sql3 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_cats(  
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	user_id int NOT NULL,
 	category varchar(10) NOT NULL, 
     filename varchar (500) NOT NULL   
      );"; 
 	
-	
+	}
 	
 	
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -113,7 +122,7 @@ $table_name = $wpdb->prefix . "userfile_icons";
 	
 	$wpdb->insert( $wpdb->prefix . "userfile_category", array( 'id'=> '','category'=>'misc'));
 
-	}
+	
 add_option('file_manger_show_dash', 'yes');
 add_option('file_manger_show_menu', 'yes');
 add_option('file_manger_allow_del', 'no');
@@ -121,7 +130,8 @@ add_option('file_manger_allow_up', 'no');
 add_option('file_manger_notify', '');
 add_option('file_manger_credit');
 add_option('file_manger_defaultcat','misc');
-add_option('file_manger_upgrade','2');
+add_option('file_manger_upgrade',''); 
+update_option('file_manger_upgrade',$instalVersion); 
 add_option('userfiles_email_subject','New File Upload');
 add_option('userfiles_email_message','You have a new file upload. The file is %filename% and has been added to your %category% category.');
 

@@ -237,7 +237,7 @@ $currOpts_menu = get_option('file_manger_show_menu');
 
 function manage_files_user() {
 global $wpdb;
-
+global $id;
 
 $currOpts_credits = get_option('file_manger_credit');
 
@@ -294,7 +294,7 @@ $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toU
 				
 						$wpdb->insert( $wpdb->prefix . "userfile_cats", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] )));  
 				
-						$DoMails =get_option('file_manger_notify'); 
+						$DoMails = get_option('file_manger_notify'); 
 						
 						if (!empty($DoMails)){ 
 						
@@ -431,7 +431,7 @@ echo '</select>   ';
 				?>
 
 				<tr><td>
-				<form enctype="multipart/form-data" action="<?php echo $_SERVER["REQUEST_URI"] ?>" method="POST" >		
+				<form enctype="multipart/form-data" action="<?php echo site_url() .'/index.php?p='.$id; ?>" method="POST" >		
 				<?php _e('Choose a file to upload, your upload limit is','userfiles').' '; ?> <?php echo $max_post; ?>M <br />
 				
 				 <input name="uploadedfile" type="file" /><br />
@@ -543,14 +543,14 @@ if (isset($_POST['addfiles'])){
                    
 						$wpdb->query("INSERT INTO ".$wpdb->prefix . "userfile_cats VALUES('','".$subDir."','".$SetCat."','".$_FILES['uploadedfile']['name']."')");
                         
-                        $messageGo='<div id="message" class="wrap">';
+                        $messageGo ='<div id="message" class="wrap">';
 						$messageGo .= "Your file has been uploaded<br />";
                         	
-						$DoMails =get_option('file_manger_notify'); 
+						$DoMails = get_option('file_manger_notify'); 
+                        
+                       if (isset($DoMails) && $DoMails != ""){ 
 						
-						if (!empty($DoMails)){ 
-						
-						wp_mail( $DoMails, __('A new file at','userfiles').' '. get_option('blogname').', '. $current_user->user_login.' '.__('has just uploaded','userfiles').' '.  basename( $_FILES['uploadedfile']['name']) .' '.__('to category','userfiles').' '. $SetCat);
+						wp_mail($DoMails, __('A new file at','userfiles').' '. get_option('blogname').', '. $current_user->user_login.' '.__('has just uploaded','userfiles').' '.  basename( $_FILES['uploadedfile']['name']) .' '.__('to category','userfiles').' '. $SetCat); 
 						$messageGo .= __('An administrator has successfully been notified of your upload.','userfiles');
 						
 						}

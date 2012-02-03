@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.2.1
+Version: 2.2.2
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -21,7 +21,7 @@ add_filter('query_vars', 'getDeleted');
 
 add_action( 'init', 'userfiles_textdomain' );
 
-$instalVersion=4;
+$instalVersion=5;
 
 function userfiles_textdomain() {
 
@@ -253,7 +253,7 @@ $currOpts_dash =  get_option('file_manger_show_dash');
 $currOpts_menu =  get_option('file_manger_show_menu');
 $currOpts_up =    get_option('file_manger_allow_up');
 $currOpts_del =   get_option('file_manger_allow_del');
-$currOpts_notify= get_option('file_manger_notify');
+$currOpts_notify = get_option('file_manger_notify');
 $currOpts_credits=get_option('file_manger_credit');
 
 
@@ -1045,7 +1045,7 @@ $usermail = str_ireplace('%category%',$_POST['curr_cat'],$usermail);
  
 
         
-        wp_mail($user_info->user_email, $usermailsubject,$usermail,'From:'.get_option('blogname').'<'.get_option('admin_email').'>');
+        wp_mail($user_info->user_email, $usermailsubject,$usermail,'From:"'.get_option('blogname').'" <'.get_option('admin_email').'>');
         
         
         
@@ -1129,6 +1129,7 @@ Choose a file to upload, your upload limit is <?php echo $max_post; ?>M <br /> <
 
 function manage_files_userpage() {
 global $wpdb;
+global $id;
 
 ob_start();
 if(is_user_logged_in()){
@@ -1254,7 +1255,7 @@ echo '</select>   ';
 						if($isCat){
 						
 							if ($rowClass == 'even_files'){
-							$rowClass='odd_files';
+							$rowClass='odd_files';  
 							}else{
 							$rowClass='even_files';
 							}
@@ -1307,11 +1308,11 @@ echo '</select>   ';
 				$max_post = (int)(ini_get('post_max_size'));
 
 				$MaxSet=1000000*(int)$max_post;
-
+                $page = array_shift( explode( '?', $_SERVER['REQUEST_URI'] ) );
 				?>
  
-				<tr><td>
-				<form enctype="multipart/form-data" action="<?php echo $_SERVER["REQUEST_URI"] ?>" method="POST" >		
+				<tr><td> 
+				<form enctype="multipart/form-data" action="<?php echo $page; ?>" method="POST" >		
 				<?php _e('Choose a file to upload, your upload limit is '); ?> <?php echo $max_post; ?>M <br />
 				
 				 <input name="uploadedfile" type="file" /><br />

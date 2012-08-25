@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.3
+Version: 2.3.1
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -1485,25 +1485,29 @@ global $current_user;
 	echo __('You have no files','userfiles');
 	}
   
-}
+} 
 
 ####################################
 #   HELP PAGE                      #
 ####################################
 function file_uploader_help() {
+
+
  ?>
+ <div class="wrap">
+ <h2>Help File</h2>
 <table class="widefat">
 
-<thead><tr><td><h2>Help</h2></td></tr></thead>
-<?php set_abase();  ?>
+<thead><tr><td><h2>Quick Help</h2></td></tr></thead>
+
 <tr><td> 
 To allow users to upload files or delete files go to the <a href="options-general.php?page=file_manager_options">options page</a> and check the appropriate options.<br /><p>
 
 The options to enable the File manager page and dashboard widgets are in the <a href="options-general.php?page=file_manager_options">options</a>.  The File Manager users menu item is only available in the admin area. If you wish to show the user the file list in your page you can use the shortcode.  If you have options selected for the user upload and/or delete files these options will be available on the page as well. </td></tr>
 
-<tr>The sidebar widget can be placed in any area that supports widgets and will list all the files available to the logged in user. No options are available for the widget. </tr>
+<tr><td>The sidebar widget can be placed in any area that supports widgets and will list all the files available to the logged in user. No options are available for the widget.</td> </tr>
 
-<tr> In the <a href="options-general.php?page=file_manager_options">options section </a>you can customize an email message to send to users to notify them of an uploaded file.  When you upload a file there is a checkbox that controls wether or not the user is notfified of the file</tr>
+<tr> <td>In the <a href="options-general.php?page=file_manager_options">options section </a>you can customize an email message to send to users to notify them of an uploaded file.  When you upload a file there is a checkbox that controls wether or not the user is notfified of the file</td></tr>
 
 
 <tr> <td>More information and documentation can be found <a href="http://www.whereyoursolutionis.com/user-files-plugin/">here.</a></td></tr>
@@ -1518,7 +1522,7 @@ The options to enable the File manager page and dashboard widgets are in the <a 
 </table>
 
 
-
+</div>
 
 <?php
 

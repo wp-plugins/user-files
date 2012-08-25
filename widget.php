@@ -29,10 +29,13 @@ class userfilesList extends WP_Widget {
 				
 						$ext = pathinfo($file, PATHINFO_EXTENSION); 
 						$tExt= SetIcon($ext);
-                         
+                         if (strpos($url,'?') ==false){
+                        $dnlLink = curPageName().'?theDLfile='.$file;
                         
-                        $dnlLink = site_url().'?page='.the_ID.'&theDLfile='.$file;
-                      
+                        }else{
+                        
+                        $dnlLink = curPageName().'&theDLfile='.$file;
+                        }
 		
 				
 				echo '<img src="'. $tExt.'" width="15" ><a rel="download.png" href="'.$dnlLink .'"> '.pathinfo($file, PATHINFO_FILENAME).'</a><br />';	

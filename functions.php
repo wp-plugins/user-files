@@ -29,9 +29,9 @@ return $retDate;
 
 
 ##########################
-# List User Files       #
+# List User Files        #
 ##########################
-function ListUserFiles($Thefile,$TheClass,$userID) {
+function ListUserFiles($Thefile,$TheClass,$userID,$fl) {
 	global $wpdb;	
 		
 		$ext = pathinfo($Thefile, PATHINFO_EXTENSION);
@@ -40,37 +40,44 @@ function ListUserFiles($Thefile,$TheClass,$userID) {
 		
 								
 		echo '<td class="'.$TheClass.'" width="60%" ><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
-		
+        
+         $getDescr= $wpdb->get_var("SELECT description FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");
+        
+        if(!empty($getDescr)){
+        
+        //echo '<td class="'.$TheClass.'" id="ShowUFnotes" ><a  href="javascript:void(0);" onclick="javascript:shownotes(\''.$getDescr.'\');">Show Notes</a></td>';
+        
+        echo '<td class="'.$TheClass.'"> <a id="dLink'.$fl.'" href="javascript:void(0);" onclick="javascript:toggle2(\'dNotes'.$fl.'\',\'dLink'.$fl.'\');" >Show Notes</a>
+ 
+
+
+     <div id="dNotes'.$fl.'" style="display:none;">'. $getDescr.'</div>
+</td>'; /**/
+
+        
+       }else{	            
+	         
+	    echo '<td class="'.$TheClass.'" >&nbsp;</td>';
+        }
+        
 		echo '<td class="'.$TheClass.'" >'. GetTimeStamp($Thefile,$userID)  .'</td>';
 		
 		    echo '<td class="'.$TheClass.'">';
-					$currOpts_defcat = get_option('file_manger_defaultcat');
-							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");	 
-								 
+						 
+		$currOpts_defcat = get_option('file_manger_defaultcat');
+		$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");
+        
 								if (!$getCrntCat) {	   
 								echo $currOpts_defcat;	
 								}else{
 								echo $getCrntCat;
 								}
-		    echo'</td>';	
+		    echo'</td>';	 
 		
         
-        if (strpos(curPageName(),'?') ==false){ 
-		$dnlLink = curPageName().'?theDLfile='.$userID.'/'.$Thefile;
-		$DelLink = curPageName().'?deletefile='.$userID.'/'.$Thefile; 
-		}else{
+		$dnlLink = get_permalink().'?theDLfile='.$userID.'/'.$Thefile;
+		$DelLink = get_permalink().'?deletefile='.$userID.'/'.$Thefile; 
 
-            if(!$post->ID){ 
-            $DelLink = curPageName().'&deletefile='.$userID.'/'.$Thefile;
-		    $dnlLink = curPageName().'&theDLfile='.$userID.'/'.$Thefile; 
-
-            }else{
-        
-            $DelLink = $post->ID.'&deletefile='.$userID.'/'.$Thefile;
-            $dnlLink = $post->ID.'&theDLfile='.$userID.'/'.$Thefile;
-            }
-		
-	}
 		
 		echo '<td class="'.$TheClass.'" align="right"><a rel="download.png" href="'.$dnlLink.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';
 		
@@ -106,13 +113,19 @@ $upload_dir = wp_upload_dir();
 								
 		echo '<tr><td  width="60%" ><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$Thefile.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"><img src="'. $tExt.'" width="20" > '.pathinfo($Thefile, PATHINFO_FILENAME) .'</td>';
         
+        $getDescr = $wpdb->get_var("SELECT description FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");
+      
+        
+        echo '<td><textarea name="notes'.$tp.'" rows=3 cols=30>'. 	$getDescr .'</textarea></td>';				
+
+        
         echo '<td>'.GetTimeStamp($Thefile,$userNum)   .'</td>';
 		
 		
 		
 		    echo '<td>';
 					$currOpts_defcat = get_option('file_manger_defaultcat');
-							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");	 
+							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$Thefile ."' and user_id='" .$userID. "'");	 
 								 
 								if (!$getCrntCat) {	   
 								echo $currOpts_defcat;	
@@ -163,13 +176,19 @@ if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 								
 								
 								echo '<td><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$files.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"> <img src="'. $tExt.'" width="20" >   '.pathinfo($files, PATHINFO_FILENAME).'</td>';
+                                
 								
-						
+        $getDescr = $wpdb->get_var("SELECT description FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
+      
+        
+        echo '<td><textarea name="notes'.$tp.'" rows=3 cols=30>'. 	$getDescr .'</textarea></td>';				
+
+                
 				echo '<td>'. GetTimeStamp($files,$userNum) .'</td>';		
 												
-						echo '<td>';
+						echo '<td>'; 
                           $currOpts_defcat = get_option('file_manger_defaultcat');
-							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
+							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
 								 
 								if (!$getCrntCat) {	   
 								echo $currOpts_defcat;	
@@ -253,7 +272,7 @@ $isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$_GET['deletefile']);
 $toUsFl=explode ( "/" , $_GET['deletefolder'] );
 
 
-$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
+$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_data WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
 	
 		if ($isitGone) {
 
@@ -292,7 +311,7 @@ $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toU
 						echo "The file ".  basename( $_FILES['uploadedfile']['name']). 
 						" has been uploaded<br />";
 				
-						$wpdb->insert( $wpdb->prefix . "userfile_cats", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] )));  
+						$wpdb->insert( $wpdb->prefix . "userfile_data", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] )));  
 				
 						$DoMails = get_option('file_manger_notify'); 
 						
@@ -364,6 +383,7 @@ echo '</select>   ';
 			if ($handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
 			$rowClass='';
 			unset($found);
+			$i=1;
 			while (false !== ($file = readdir($handle))) {
 					
 					if ($file!=".") {
@@ -374,7 +394,7 @@ echo '</select>   ';
 							$searchMatch = strpos(strtolower($file),strtolower($user_file_search));
 							
 							if($searchMatch === 0 || $searchMatch >0){
-							ListUserFiles($file,$rowClass,$current_user->ID);
+							ListUserFiles($file,$rowClass,$current_user->ID,$i);
 							$found=true;
 							}
 							
@@ -383,16 +403,18 @@ echo '</select>   ';
 						$isCat = CatFilter($file,$user_cat_sort,$current_user->ID);
 						
 						if($isCat){
-						ListUserFiles($file,$rowClass,$current_user->ID);
+						ListUserFiles($file,$rowClass,$current_user->ID,$i);
 						$found=true;
 						}
 						}else{
 
-							ListUserFiles($file,$rowClass,$current_user->ID);
+							ListUserFiles($file,$rowClass,$current_user->ID,$i);
 						
 							}
 						}
 					}
+					
+					$i++;
 				}
 				
 				if($user_file_search && $found != true) {
@@ -486,7 +508,7 @@ return true;
 }else{ 
  $currOpts_defcat = get_option('file_manger_defaultcat');
 
-		$IsaCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$file ."' and user_id='" .$tUserid. "' and category='".$cate."'");	 
+		$IsaCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$file ."' and user_id='" .$tUserid. "' and category='".$cate."'");	 
 				 
 				 
 				 
@@ -494,7 +516,7 @@ return true;
 				return true;	
 				}else{
 				
-				$IsNoCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$file ."' and user_id='" .$tUserid. "'");	
+				$IsNoCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$file ."' and user_id='" .$tUserid. "'");	
 				
 					if(empty($IsNoCat) && $currOpts_defcat==$cate){
 					return true;
@@ -541,16 +563,22 @@ if (isset($_POST['addfiles'])){
 
 					if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
                    
-						$wpdb->query("INSERT INTO ".$wpdb->prefix . "userfile_cats VALUES('','".$subDir."','".$SetCat."','".$_FILES['uploadedfile']['name']."')");
+						$wpdb->query("INSERT INTO ".$wpdb->prefix . "userfile_data VALUES('','".$subDir."','".$SetCat."','".$_FILES['uploadedfile']['name']."')");
                         
                         $messageGo ='<div id="message" class="wrap">';
 						$messageGo .= "Your file has been uploaded<br />";
                         	
 						$DoMails = get_option('file_manger_notify'); 
                         
-                       if (isset($DoMails) && $DoMails != ""){ 
+                       if (!empty($DoMails) && $DoMails != ""){
+					   
+								$url = $_SERVER['SERVER_NAME'];
+											   
+					   
+						 $headers[] ='From:"'.get_option('blogname').'" <no-reply@'. str_replace('www.','',$url).'>';
+					   
 						
-						wp_mail($DoMails, __('A new file at','userfiles').' '. get_option('blogname').', '. $current_user->user_login.' '.__('has just uploaded','userfiles').' '.  basename( $_FILES['uploadedfile']['name']) .' '.__('to category','userfiles').' '. $SetCat); 
+						wp_mail($DoMails, __('A new file at','userfiles').' '. get_option('blogname'), $current_user->user_login.' '.__('has just uploaded','userfiles').' '.  basename( $_FILES['uploadedfile']['name']) .' '.__('to category','userfiles').' '. $SetCat,$headers); 
 						$messageGo .= __('An administrator has successfully been notified of your upload.','userfiles');
 						
 						}
@@ -586,6 +614,27 @@ update_option('file_manger_upgrade',$instalVersion);
 
 }
 
+/*
+function file( $file_id ) {
+global $wpdb;
+
+$GatherFileData = $wpdb->get_var("SELECT * FROM ". $wpdb->prefix . "userfile_meta WHERE file_id = '".$file_id ."' ");	
+
+$file_array = array();
+
+while($rows = mysql_fetch_array($result)){
+$tFile=$rows['meta_key'];
+$pt=$rows['meta_value'];
+$file_array[] = $tFile;
+}
+
+return $file_array;
+
+}  
+*/
+
+
+    
 
 
 ?>

@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag:2.2.2 
+Stable Tag:2.2.4
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -94,5 +94,9 @@ Files can have icons and category, both are customizable.  Users and admins can 
 *Mail notification fix
 *Fix for file corruption due to error with sync software
 
-
+=2.3=
+* Mail notification fix (for real)
+* Increased limit on category name lenth
+* added notes for files
+* added security for file downloads
 

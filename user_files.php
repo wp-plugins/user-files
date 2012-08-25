@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.2.2
+Version: 2.3
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -73,53 +73,85 @@ chmod($upload_dir['basedir'].'/userfile_icons', 0777);
 	
      $sql2 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_category(  
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	category varchar(10) NOT NULL,
+	category varchar(50) NOT NULL,
     UNIQUE (category)
      );"; 
      
      }
-     
-      if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_cats") != $wpdb->prefix . "userfile_cats") {
-   
+	 
+
+
+
+	 
+	 
+
+    /* 
 	
-	$sql3 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_cats(  
+     if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_data") != $wpdb->prefix . "userfile_data") {
+      
+      $sql3 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_data(  
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	user_id int NOT NULL,
 	category varchar(10) NOT NULL, 
-    filename varchar (500) NOT NULL   
+    filename varchar (500) NOT NULL,
+     );"; 
+     
+ 
+    
+    } */
+    
+   
+    if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_data") != $wpdb->prefix . "userfile_data") {
+    $sql3 = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "userfile_data(  
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	user_id int NOT NULL,
+	category varchar(50) NOT NULL, 
+    filename varchar (500) NOT NULL,
+    description longtext NOT NULL
      );"; 
 	
 	}
-	
+    
 	
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
       dbDelta($sql1);
 	  dbDelta($sql2);
 	  dbDelta($sql3);
+	   
+	  
+	if($wpdb->get_var("show tables like ".$wpdb->prefix . "userfile_category") == $wpdb->prefix . "userfile_category") {  
+	  
+	  
+	  $DumpFiles = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix."userfile_category");
+	  
+		  foreach ( $DumpFiles as $SaveFiles ) {
+		  
+		  $wpdb->insert($wpdb->prefix . "userfile_data", array( 'id'=>$SaveFiles->id,'user_id'=>$SaveFiles->user_id,'category'=>$SaveFiles->category,'filename'=>$SaveFiles->filename));
+		  
+		  
+		  } 
+	  
+	  $wpdb->query("DROP TABLE  ".$wpdb->prefix . "userfile_category");
+	  
+	 }
 	 
+	 
+	$wpdb->query( "ALTER TABLE   " . $wpdb->prefix . "userfile_category MODIFY category  VARCHAR( 50 )" ); 
+	$wpdb->query( "ALTER TABLE   " . $wpdb->prefix . "userfile_data MODIFY category  VARCHAR( 50 )" ); 
+
+	
 	
 	$wpdb->insert($wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'pdf','image'=>plugins_url( '/user-files/img/pdf.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'doc','image'=>plugins_url( '/user-files/img/word.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'docx','image'=>plugins_url( '/user-files/img/word.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'txt','image'=>plugins_url( '/user-files/img/word.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'jpg','image'=>plugins_url( '/user-files/img/jpg.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'png','image'=>plugins_url( '/user-files/img/jpg.jpg' , dirname(__FILE__) )));
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'gif','image'=>plugins_url( '/user-files/img/jpg.jpg' , dirname(__FILE__) )));
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'jpeg','image'=>plugins_url( '/user-files/img/jpg.jpg' , dirname(__FILE__) )));
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'xls','image'=>plugins_url( '/user-files/img/excel.jpg' , dirname(__FILE__) ))); 
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'zip','image'=>plugins_url( '/user-files/img/zip.jpg' , dirname(__FILE__) )));
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_icons", array( 'id'=> '','extension'=>'rar','image'=>plugins_url( '/user-files/img/zip.jpg' , dirname(__FILE__) )));
-	
 	$wpdb->insert( $wpdb->prefix . "userfile_category", array( 'id'=> '','category'=>'misc'));
 
 	
@@ -134,7 +166,7 @@ add_option('file_manger_upgrade','');
 update_option('file_manger_upgrade',$instalVersion); 
 add_option('userfiles_email_subject','New File Upload');
 add_option('userfiles_email_message','You have a new file upload. The file is %filename% and has been added to your %category% category.');
-
+ 
 	
 
 $wp_roles->add_cap( 'administrator', 'manage_userfiles' );
@@ -194,6 +226,7 @@ rmdir( $dir );
 
 	$wpdb->query('DROP TABLE '.$wpdb->prefix.'userfile_icons');
 	$wpdb->query('DROP TABLE '.$wpdb->prefix.'userfile_category');
+	$wpdb->query('DROP TABLE '.$wpdb->prefix.'userfile_data');  
 	$wpdb->query('DROP TABLE '.$wpdb->prefix.'userfile_cats');  
 	
     delete_option('file_manger_show_dash');
@@ -225,9 +258,12 @@ rmdir( $dir );
 
 	
 function files_settings_page() {
-userfiles_header();
+
+echo '<h2>'. __('File Manager Options').'</h2>'; 
+
+
+set_abase();
 ?>
-<h2><?php _e('File Manager Options'); ?></h2>
 <p>
  
 <?php if ($_GET['full_uninstall']==true) {
@@ -375,7 +411,7 @@ $currOpts_email_mes=get_option('userfiles_email_message');
     
 	 
 	<tr><td>
-	<input type="hidden" name ="update" value="update">
+	<input type="hidden" name ="update" value="<?php echo __('update','userfiles');?>">
 	<input type="submit" value="<?php _e('Save Options','userfiles'); ?>" class="button-secondary" /></td>
 
 </form>
@@ -404,7 +440,10 @@ $currOpts_email_mes=get_option('userfiles_email_message');
 }
 
 function manage_files_mainpg() {  
-userfiles_header();
+
+echo '<h2>'.__('User Files','userfiles').'</h2>'; 
+
+set_abase();
 global $wpdb;
 $upload_dir = wp_upload_dir();
 
@@ -415,7 +454,7 @@ $isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$_GET['deletefile']);
 $toUsFl=explode ( "/" , $_GET['deletefolder'] );
 
 
-$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
+$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_data WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
 	
 		if ($isitGone) {
 
@@ -443,7 +482,7 @@ $dir = $_GET['deletefolder'].'/';
 
 		}
 	}
-	$cleanDB= $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$_GET['deletefolder']. "'");
+	$cleanDB= $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_data WHERE user_id ='" .$_GET['deletefolder']. "'");
     $isitGone = rmdir( $dir );
 
 
@@ -461,49 +500,69 @@ $dir = $_GET['deletefolder'].'/';
  
 						
 						
-		if(isset($_POST['change-em'])){
+		if(isset($_POST['change-em']) || isset($_POST['submit'])){
 			$step=1;
 			unset($err);
 				$CheckCount=$_POST['CheckedCount'];
+                
+                
 				
 				while($step<= $CheckCount) {	
 					$upCat=$_POST['change_cat'.$step];
-					
-					if($upCat == "addit"){
-					
-					$Set_user=$_POST['changecat_user'.$step];
+                    $Set_user=$_POST['changecat_user'.$step];
 					$Set_file=$_POST['file'.$step];
 					$Set_cat=$_POST['newCat'];
 					
-					$isIn = $wpdb->get_var("SELECT id FROM ".$wpdb->prefix."userfile_cats WHERE user_id='".$Set_user."' AND filename='".$Set_file."'");
+					$isIn = $wpdb->get_var("SELECT id FROM ".$wpdb->prefix."userfile_data WHERE user_id='".$Set_user."' AND filename='".$Set_file."'");
+					
+                    if($upCat == "addit" && $Set_cat !='chge'){
 					
 					
 							if($isIn){
-							$stickit = $wpdb->update($wpdb->prefix . "userfile_cats", array( 'category'=>$Set_cat),array( 'id'=>$isIn)); 
+							
+							 
+							$stickit = $wpdb->update($wpdb->prefix . "userfile_data", array( 'category'=>$Set_cat),array( 'id'=>$isIn)); 
 							
 							}else{
 							  
-							$stickit = $wpdb->insert($wpdb->prefix . "userfile_cats", array( 'id'=>'','category'=> $Set_cat,'filename'=>$Set_file,'user_id'=>$Set_user)); 
+							$stickit = $wpdb->insert($wpdb->prefix . "userfile_data", array( 'id'=>'','category'=> $Set_cat,'filename'=>$Set_file,'category'=> get_option('file_manger_defaultcat'),'user_id'=>$_POST['changecat_user'.$step])); 
 							} 
 					
-					if (!$stickit){
+                                        if (!$stickit){
+                                        
+                                        $err .=$Set_file.', ';
+                                        
+                                        }
+						 
+					              
 					
-					$err .=$Set_file.', ';
 					
 					}
-						
-					
-					
-					
-					}	
-					
+                    
+                $Set_descr=$_POST['notes'.$step];
+                $isSaved = $_POST['fileid'.$step];
+                
+                if (isset($Set_descr)){
+				$isIn = $wpdb->get_var("SELECT id FROM ".$wpdb->prefix."userfile_data WHERE user_id='".$Set_user."' AND filename='".$Set_file."'");
+               
+							if($isIn){
+							$stickit = $wpdb->update($wpdb->prefix . "userfile_data", array( 'description'=>$Set_descr),array( 'id'=>$isIn)); 
+							
+							}else{
+							  
+							$stickit = $wpdb->insert($wpdb->prefix . "userfile_data", array( 'id'=>'','description'=> $Set_descr,'filename'=>$Set_file,'user_id'=>$_POST['changecat_user'.$step])); 
+							} 
+                
+               
+                                 
+                 }
 				$step++;
 				}		
 			
 			
 						if (!$err) {
 						echo '<div id="message" class="updated">';
-						echo __('Categories have been changes successfully','userfiles');
+						echo __('Changes Saved','userfiles');
 						echo '</div>';
 						} else{
 						echo '<div id="message" class="error">';
@@ -523,7 +582,7 @@ $dir = $_GET['deletefolder'].'/';
 		
 	if($_POST['catsnuser']) {
 
-		$SortByCat=$_POST['showcatsfilter'];
+		$SortByCat=$_POST['showcatsfilter']; 
 		
 		if($SortByCat=='chge'){
 		unset($SortByCat);
@@ -603,7 +662,7 @@ echo '</select>';
 
 <?php
 global $tp;
-echo '<h3>'.__('User Files','userfiles').'</h3>'; ?>
+?>
 
 <form method="POST" action="admin.php?page=manage-files-main" >
 <div align="left">
@@ -663,8 +722,8 @@ while ( ($file = readdir($handle))!== false) {
 								$userNum=(int)$file;
 								$user_info = get_userdata($userNum); 
 								echo '<thead>';
-								echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
-								echo '<th width 10"%"></th></thead>'; 
+								echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span></th><th></th><th>Date</th><th width="20%">Category</th>';
+								echo '<th width ="10%"></th></thead>'; 
 																					
 								}
 								
@@ -680,7 +739,7 @@ while ( ($file = readdir($handle))!== false) {
 						
 						
 							
-							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_cats WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
+							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
 								 
 								if (!$getCrntCat) {	   
 																		 
@@ -705,7 +764,7 @@ while ( ($file = readdir($handle))!== false) {
 					
 						echo '<input type="hidden" name="CheckedCount" value="'.$tp.'" />';
 						if($endTable){
-						echo '</table><p>&nbsp;</p><hr size 3px width="100%"/>';
+						echo '</table><div align="left"><input type="submit" name="submit" value="'. __('Update','userfiles').'" /></div><p>&nbsp;</p><hr size 3px width="100%"/>';
 						}
 						
 				}
@@ -714,7 +773,7 @@ while ( ($file = readdir($handle))!== false) {
 	}
 }
 
-if($foundOne!=true){
+if($foundOne!=true){ 
 echo '<h3>';
 echo __('No Files Found','userfiles');
 echo'</h3>';
@@ -734,13 +793,13 @@ echo'</h3>';
 				$userNum=(int)$SortByUser;
 				$user_info = get_userdata($userNum); 
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
-				echo '<th width 10"%"></th></thead>'; 
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th></th><th>Date</th><th width="20%">Category</th>';
+				echo '<th width ="10%"></th></thead>'; 
 				
 								
 					ListAdminFiles($userNum);
 			 
-				echo '</table><p>&nbsp;</p><hr size 3px width="100%"/>';
+				echo '</table><div align="left"><input type="submit" name="submit" value="'. __('Update','userfiles').'" /></div><p>&nbsp;</p><hr size 3px width="100%"/>';
                 echo '<input type="hidden" name="CheckedCount" value="'.$tp.'" />';
 						
 				//End sort by user only				
@@ -751,8 +810,8 @@ echo'</h3>';
 				$user_info = get_userdata($userNum);
 				echo '<table class="widefat" >';				
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
-				echo '<th width 10"%"></th></thead>'; 
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th></th><th>Date</th><th width="20%">Category</th>';
+				echo '<th width ="10%"></th></thead>'; 
 				 unset($found);
 				 if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {
 				
@@ -786,7 +845,7 @@ echo'</h3>';
 				
 				
 				
-					echo '</table><p>&nbsp;</p><hr size 3px width="100%"/>';			
+					echo '</table><div align="left"><input type="submit" name="submit" value="'. __('Update','userfiles').'" /></div><p>&nbsp;</p><hr size 3px width="100%"/>';			
 					}else{
 					//Sort by cat only
 					
@@ -805,8 +864,8 @@ echo'</h3>';
 									$userNum=(int)$file;
 									$user_info = get_userdata($userNum); 
 									echo '<thead>';
-									echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
-									echo '<th width 10"%"></th></thead>'; 
+									echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th></th><th>Date</th><th width="20%">Category</th>';
+									echo '<th width ="10%"></th></thead>'; 
 									
 		if ($Subhandle = @opendir($upload_dir['basedir'].'/file_uploads/'.$userNum)) {							
 										while (false !== ($files = readdir($Subhandle))) {
@@ -831,7 +890,9 @@ echo'</h3>';
 								}
 								
 								
-									echo '</table><p>&nbsp;</p><hr size 3px width="100%"/>';
+									echo '</table><div align="left"><input type="submit" name="submit" value="'. __('Update','userfiles').'" /></div><p>&nbsp;</p><hr size 3px width="100%"/>';	
+                                    
+                                
 
 									}
 									
@@ -858,7 +919,7 @@ $tp=1;
 while ( ($file = readdir($handle))!== false) { 
 		
 		if ($file!=".") {
-			if ($file!="..") { 
+			if ($file!="..") {  
 			
 			
 			echo '<table class="widefat" >';
@@ -866,14 +927,13 @@ while ( ($file = readdir($handle))!== false) {
 				$userNum=(int)$file;
 				$user_info = get_userdata($userNum); 
 				echo '<thead>';
-				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th>Date</th><th width="20%">Category</th>';
-				echo '<th width 10"%"></th></thead>'; 
+				echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span> </th><th></th><th>Date</th><th width="20%">Category</th>';
+				echo '<th width ="10%"></th></thead>'; 
 				
 								
 					ListAdminFiles($userNum);
 			
-				echo '</table><p>&nbsp;</p><hr size 3px width="100%"/>';
-
+				echo '</table><div align="left"><input type="submit" name="submit" value="'. __('Update','userfiles').'" /></div><p>&nbsp;</p><hr size 3px width="100%"/>';		
 				
 				//End main page list
 				}
@@ -889,7 +949,7 @@ echo '<input type="hidden" name="CheckedCount" value="'.$tp.'" />';
 
 } //End IF
 
-?>
+?> 
 
 </form>
 <?php
@@ -908,6 +968,9 @@ if (isset($_GET['deletecat'])){
 
 	if($currOpts_defcat!=$_GET['deletecat']){
 	$wpdb->query("DELETE FROM ". $wpdb->prefix . "userfile_category WHERE category='".$_GET['deletecat'] ."'");
+    
+    $wpdb->query("UPDATE ".$wpdb->prefix."userfile_data set category='".$currOpts_defcat."' WHERE category='".$_GET['deletecat']."'");
+   
 	}else{
 	echo '<div id="message" class="error">';
 	echo $currOpts_defcat .' '. __('is the default category. You cannot delete this unless you change the default category.','userfiles');
@@ -916,6 +979,8 @@ if (isset($_GET['deletecat'])){
 	}
 }
 $newCat = $_POST['addcat'];
+
+
 
 if (isset($newCat)){
 
@@ -937,15 +1002,17 @@ $isCat = $wpdb->query( "SELECT * FROM ".$wpdb->prefix."userfile_category WHERE c
 	     	echo '<div id="message" class="updated">';
 	     	echo $newCat . __(' has been added','userfiles' );
 	     	echo '</div>';
-	     	} else{
-	     	echo '<div id="message" class="error">';
+	     	} else{			
+						
+			
+			echo '<div id="message" class="error">';
 	     	echo __('There was an error adding the category','userfiles');
 	     	echo '</div>';
 	     	}
 		
 		
 }
-
+ 
 $newdefcat=$_GET['defcat'];
 if (isset($newdefcat)){
 
@@ -999,10 +1066,11 @@ echo '</table>';
 
 
 function manage_files_upload() { 
-userfiles_header();
-global $wpdb;
-echo '<p><h3>'.__('Upload Files','userfiles') .'</h3></p></p>';
+echo '<p><h2>'.__('Upload Files','userfiles') .'</h2></p></p>';
 
+
+set_abase();
+global $wpdb;
 $upload_dir = wp_upload_dir();
 
 
@@ -1024,7 +1092,7 @@ $upload_dir = wp_upload_dir();
 
 	if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 	
-	$wpdb->insert( $wpdb->prefix . "userfile_cats", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
+	$wpdb->insert( $wpdb->prefix . "userfile_data", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
 	
 		
         
@@ -1035,17 +1103,16 @@ $upload_dir = wp_upload_dir();
 
 $usermailsubject = get_option('userfiles_email_subject');
 $usermail = get_option('userfiles_email_message');
-$usermail = str_ireplace('%user_first%',$user_info->first_name,$usermail);
-$usermail = str_ireplace('%user_last%',$user_info->last_name,$usermail);
-$usermail = str_ireplace('%user_login%',$user_info->user_login,$usermail);
-$usermail = str_ireplace('%filename%',basename( $_FILES['uploadedfile']['name']),$usermail);
-$usermail = str_ireplace('%category%',$_POST['curr_cat'],$usermail); 
+$usermail = str_replace('%user_first%',$user_info->first_name,$usermail);
+$usermail = str_replace('%user_last%',$user_info->last_name,$usermail);
+$usermail = str_replace('%user_login%',$user_info->user_login,$usermail);
+$usermail = str_replace('%filename%',basename( $_FILES['uploadedfile']['name']),$usermail);
+$usermail = str_replace('%category%',$_POST['curr_cat'],$usermail); 
 //$usermail = str_ireplace('%','',$usermail); 
-
- 
+ $headers[] ='From:"'.get_option('blogname').'" <'.get_option('admin_email').'>';
 
         
-        wp_mail($user_info->user_email, $usermailsubject,$usermail,'From:"'.get_option('blogname').'" <'.get_option('admin_email').'>');
+        wp_mail($user_info->user_email, $usermailsubject, $usermail, $headers); 
         
         
         
@@ -1132,6 +1199,12 @@ global $wpdb;
 global $id;
 
 ob_start();
+
+wp_enqueue_script('jquery'); 
+	   wp_register_script( 'notepop', plugins_url( '/user-files/includes/js/divtoggle.js') );
+       wp_enqueue_script( 'notepop' );
+       wp_enqueue_style( 'ufpageend',plugins_url( '/user-files/style.css')); 
+
 if(is_user_logged_in()){
 $currOpts_credits = get_option('file_manger_credit');
 
@@ -1141,31 +1214,36 @@ $currOpts_credits = get_option('file_manger_credit');
 		global $current_user;
 			  get_currentuserinfo();
               
-if (isset($_GET['deletefile'])){
-
-$theDel_file=$_GET['deletefile'];
-
-$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$theDel_file);
-
-$toUsFl=explode ( "/" , $theDel_file );
+		if (isset($_GET['deletefile'])){
 
 
-$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
-	
-		if ($isitGone) {
+			
+			
+			
+				$theDel_file=$_GET['deletefile'];
 
-		echo '<div id="message" class="updated">';
-		echo __('The file has been deleted','userfiles');
-		echo '</div>';
-		} else{ 
-		echo '<div id="message" class="error">';
-		echo __('There was an error deleting the file, please try again!','userfiles');
-		echo '</div>';
+				$isitGone = @unlink($upload_dir['basedir'].'/file_uploads/'.$theDel_file); 
+
+				$toUsFl=explode ( "/" , $theDel_file );
+
+
+				$wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_data WHERE user_id ='" .$toUsFl[1]. "' AND filename ='".$toUsFl[2]."'");
+				
+				
+						if(!file_exists($upload_dir['basedir'].'/file_uploads/'.$theDel_file)){	
+						
+						echo '<div id="message" class="updated">';
+						echo __('The file has been deleted','userfiles');
+						echo '</div>';
+						} else{ 
+						echo '<div id="message" class="error">';
+						echo __('There was an error deleting the file, please try again!','userfiles');
+						echo '</div>';
+						}
+				
+			
+			
 		}
-		
-		
-  	
-}
 
 	            
 			
@@ -1189,7 +1267,6 @@ $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_cats WHERE user_id ='" .$toU
 			}
 
 			
-	echo '<head>  <link rel="stylesheet" href="'.plugins_url( '/user-files/style.css').'" type="text/css"/></head>';
     
 echo $_POST['addfiles'].'<br /><p>';
 ?>
@@ -1223,10 +1300,11 @@ echo '</select>   ';
 	
 <?php	
 		echo '<table class = "user_files" width="100%">';	
-		echo'<thead><th>Your Files</th><th>Date</th><th>Category</th><th></th></thead>';
+		echo'<thead><th>Your Files</th><th></th><th>Date</th><th>Category</th><th></th></thead>';
 			if ($handle = @opendir($upload_dir['basedir'].'/file_uploads/'.$current_user->ID)) {
 			$rowClass='even_files';	
 			unset($found);
+            $count=1;
 			while (false !== ($file = readdir($handle))) {
 					
 					if ($file!=".") {
@@ -1244,7 +1322,7 @@ echo '</select>   ';
 								$rowClass='even_files';
 								}
 							
-							ListUserFiles($file,$rowClass,$current_user->ID);
+							ListUserFiles($file,$rowClass,$current_user->ID,$count);
 							$found=true;
 							}
 							
@@ -1259,8 +1337,8 @@ echo '</select>   ';
 							}else{
 							$rowClass='even_files';
 							}
-						
-						ListUserFiles($file,$rowClass,$current_user->ID);
+						 
+						ListUserFiles($file,$rowClass,$current_user->ID,$count);
 						$found=true;
 						}
 						}else{
@@ -1271,11 +1349,12 @@ echo '</select>   ';
 							$rowClass='even_files';
 							}
 						    
-							ListUserFiles($file,$rowClass,$current_user->ID);	
+							ListUserFiles($file,$rowClass,$current_user->ID,$count);	
 						
 							}
 						}
 					}
+                    $count++;
 				}
 				
 				if($user_file_search && $found != true) {
@@ -1412,11 +1491,11 @@ global $current_user;
 #   HELP PAGE                      #
 ####################################
 function file_uploader_help() {
-userfiles_header();   ?>
+ ?>
 <table class="widefat">
 
 <thead><tr><td><h2>Help</h2></td></tr></thead>
-
+<?php set_abase();  ?>
 <tr><td> 
 To allow users to upload files or delete files go to the <a href="options-general.php?page=file_manager_options">options page</a> and check the appropriate options.<br /><p>
 
@@ -1448,45 +1527,61 @@ The options to enable the File manager page and dashboard widgets are in the <a 
 function getDownloads(){
 
 if (isset($_GET['theDLfile'])){
-	
-		$upload_dir = wp_upload_dir();
-		global $current_user;
-			  get_currentuserinfo();
- 
 
-			  
-	$theDLfile=$_GET['theDLfile'];		  
-			  
-    $theDLfile_array=explode("/",$theDLfile);	  
-	
-    $num=count($theDLfile_array);
-    
-
-    
-    if($num==1)
-    {
-       $file = $_GET['theDLfile'];	
-       
-       $url=$upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/';
-       
-    }
-    else 
-    {
-    	$file = $theDLfile_array[1];
-    	
-    	$url=$upload_dir['basedir'].'/file_uploads/'.$theDLfile_array[0] .'/';
-    }
-	
+if (is_user_logged_in()){	
 
 	
-	set_time_limit(0);
+				$upload_dir = wp_upload_dir();
+				global $current_user;
+					  get_currentuserinfo();
+		 
 
-output_file($url.$file, $file, '');
-	
-	
+					  
+			$theDLfile=$_GET['theDLfile'];		  
+					  
+			$theDLfile_array=explode("/",$theDLfile);	  
+			
+			$num=count($theDLfile_array);
+			
+
+			
+			if($num==1)
+			{
+			   $file = $_GET['theDLfile'];	
+			   
+			   $url=$upload_dir['basedir'].'/file_uploads/'.$current_user->ID .'/';
+			   
+			}
+			else 
+			{
+				if($current_user->ID == $theDLfile_array[0] || current_user_can('manage_userfiles') ){
+			
+				$file = $theDLfile_array[1];
+				
+				$url=$upload_dir['basedir'].'/file_uploads/'.$theDLfile_array[0] .'/';
+				}else{
+				?>
+				<SCRIPT>alert( 'This file is not yours, you do not have permission to download it. ');</script>
+				<?PHP
+				}
+			
+			}
+			
+
+			
+			set_time_limit(0);
+
+		output_file($url.$file, $file, '');
+			
+}else{
+
+echo 'You must <a href="'.site_url.'/wp-admin">login</a> to download this file.';
+}	
 	   	
 	
 	}
+	
+	
 return; 
 
 
@@ -1596,12 +1691,110 @@ die();
 
 
 
-function userfiles_header(){
+function set_abase(){
 
-	if(current_user_can('manage_options')){
-		$adtent = file_get_contents('http://www.whereyoursolutionis.com/ads/userfiles.html');
-	echo $adtent;
+	if(current_user_can('manage_userfiles_settings') || current_user_can('manage_userfiles')){
+
+	   wp_register_script( 'widgetstuff', site_url().'/wp-admin/load-scripts.php' );
+       wp_enqueue_script( 'widgetstuff' );
+	   wp_enqueue_style( 'rwefaervev',site_url().'/wp-admin/load-styles.php'); 
+
+$upload_dir = wp_upload_dir();	
+	?>
 	
+<div class="wrap">
+				
+			<div id="dashboard-widgets-wrap">
+
+
+
+								<div id="dashboard-widgets" class="metabox-holder columns-2">
+										<!-- BOX 1-->
+
+								<div id="postbox-container-1" class="postbox-container">
+
+										<div id="normal-sortables" class="meta-box-sortables ui-sortable">
+
+											
+
+											<div id="showverview-main" class="postbox">
+
+												<div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>User File Manager Extensions<span class="postbox-title-action"></span></span></h3>
+
+														<div class="inside">
+														<table width="100%">
+														<tr><th width="50%" align="center">Userfiles Addons</th><th width="50%" align="center" >Custom Plugins and web/PC software</th></tr>
+													
+ 
+														<tr><td align="center" style="padding:10px 10px 10px 10px;">
+														<br />
+														<a href="http://www.whereyoursolutionis.com/user-file-manager-front-end-admin/">User Files Manager Front End Admin</a><br />
+														<a href="http://www.whereyoursolutionis.com/group-files-plugin/">Group Files</a>
+														<hr />
+														<em>We offer custom wordpress plugins and modifications. Want something built on wordpress? We can help! </em>
+        <p><a href="http://www.whereyoursolutionis.com/"><img src="http://www.whereyoursolutionis.com/ads/userfiles_img/wp-1.png" alt="WP Support" width="174" height="58" border="0" longdesc="http://www.whereyoursolutionis.com/ads/userfiles_img/wp-1.png" /></a></p>
+														 </td>
+														<td align="center" style="padding:10px 10px 10px 10px;"> 
+														
+														    <em>Get sofware made specifically for your needs. If we can't create your software your consultation is free.  </em>
+        <h6><a href="http://www.whereyoursolutionis.com/services/custom-software/"><img src="http://www.whereyoursolutionis.com/ads/userfiles_img/is-1.png" alt="Innovative Solutions" width="174" height="58" border="0" longdesc="http://www.whereyoursolutionis.com/ads/userfiles_img/is-1.png" /></a>									
+														
+														
+														
+														
+														</td></tr></table>
+														
+														
+														
+														</div>
+
+												</div>		
+
+											</div>
+
+										</div>
+										
+										
+								<!-- BOX 2-->
+								<div id="postbox-container-2" class="postbox-container">
+
+										<div id="normal-sortables" class="meta-box-sortables ui-sortable">
+
+											
+
+											<div id="showverview-main" class="postbox">
+
+												<div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>Donate To Development<span class="postbox-title-action"></span></span></h3>
+
+														<div class="inside" align="center">
+													
+														<p ><em>Donate for this plugin</em></p>
+														<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+												<input type="hidden" name="cmd" value="_s-xclick">
+												<input type="hidden" name="hosted_button_id" value="AT8H7UZ78PMC4">
+												<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+												<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+												</form>
+												</p>
+											
+												You can help support our development of this and future free plugins. 
+												
+  
+														
+														</div>
+
+												</div>		
+
+											</div>
+
+										</div>
+								</div>
+				
+			</div>	
+</div>	
+<div class="clear"></div>	
+	
+	<?php
 	
 	}
 
@@ -1635,8 +1828,8 @@ return plugins_url( '/user-files/img/unknown.jpg' , dirname(__FILE__) );
 
 function Icon_management()  {
 global $wpdb;
+
 $upload_dir = wp_upload_dir();
-userfiles_header();
 
 if (isset($_POST['submit'])){
 unset($err1);
@@ -1746,6 +1939,7 @@ $goAwayIcon = $wpdb->query("DELETE FROM ".$wpdb->prefix."userfile_icons WHERE ex
 }
  
 
+set_abase();
 $getIcons = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix . "userfile_icons ORDER BY image");	
 
 echo '<table class="widefat"><tr><thead><th>'.__('Icons','userfiles').'</th><th></th></tr></thead>';
@@ -1785,14 +1979,15 @@ echo '</table>';
 
 function FTP_Paths(){
 unset($search);
-$upload_dir = wp_upload_dir();
-global $wpdb;							
-userfiles_header();
+
+							
+set_abase();
 ?>
 
 <p>&nbsp;</p>
 <?php
-
+global $wpdb;
+$upload_dir = wp_upload_dir();
 echo __('Files can be uploaded to the users folder via FTP as well as through the upload page. If the users has no folder press create folder to create the users file folder.','userfiles').'</p>';
 
 
@@ -1860,6 +2055,11 @@ function getDeleted($aVars) {
     return $aVars;
 
 }
+
+
+
+
+
 
 
 ?>

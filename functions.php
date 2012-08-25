@@ -75,8 +75,9 @@ function ListUserFiles($Thefile,$TheClass,$userID,$fl) {
 		    echo'</td>';	 
 		
         
-		$dnlLink = get_permalink().'?theDLfile='.$userID.'/'.$Thefile;
-		$DelLink = get_permalink().'?deletefile='.$userID.'/'.$Thefile; 
+		$dnlLink = get_page_uri($post->ID).'?theDLfile='.$userID.'/'.$Thefile;
+		$DelLink = get_page_uri($post->ID).'?deletefile='.$userID.'/'.$Thefile; 
+
 
 		
 		echo '<td class="'.$TheClass.'" align="right"><a rel="download.png" href="'.$dnlLink.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';

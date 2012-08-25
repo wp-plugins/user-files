@@ -4,7 +4,7 @@ Plugin Name: User File Manager
 Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
 Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
 Author: Innovative Solutions
-Version: 2.3.1
+Version: 2.3.2
 Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
@@ -1387,11 +1387,10 @@ echo '</select>   ';
 				$max_post = (int)(ini_get('post_max_size'));
 
 				$MaxSet=1000000*(int)$max_post;
-                $page = array_shift( explode( '?', $_SERVER['REQUEST_URI'] ) );
 				?>
  
 				<tr><td> 
-				<form enctype="multipart/form-data" action="<?php echo $page; ?>" method="POST" >		
+				<form enctype="multipart/form-data" action="<?php the_permalink(); ?>" method="POST" >		
 				<?php _e('Choose a file to upload, your upload limit is '); ?> <?php echo $max_post; ?>M <br />
 				
 				 <input name="uploadedfile" type="file" /><br />

@@ -3,8 +3,8 @@ Contributors: Innovative Solutions
 Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable Tag:2.2.4
+Tested up to: 3.4.1
+Stable Tag:2.3
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 

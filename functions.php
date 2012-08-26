@@ -33,7 +33,7 @@ return $retDate;
 ##########################
 function ListUserFiles($Thefile,$TheClass,$userID,$fl) {
 	global $wpdb;	
-		
+	global $post;
 		$ext = pathinfo($Thefile, PATHINFO_EXTENSION);
 		
 		$tExt =  SetIcon($ext);
@@ -74,11 +74,24 @@ function ListUserFiles($Thefile,$TheClass,$userID,$fl) {
 								}
 		    echo'</td>';	 
 		
+         
+	 
+        if (strpos(curPageName(),'?') ==false){ 
+		$dnlLink = curPageName().'?theDLfile='.$userID.'/'.$Thefile;
+		$DelLink = curPageName().'?deletefile='.$userID.'/'.$Thefile; 
+		}else{
+
+            if(!$post->ID){ 
+            $DelLink = curPageName().'&deletefile='.$userID.'/'.$Thefile;
+		    $dnlLink = curPageName().'&theDLfile='.$userID.'/'.$Thefile; 
+
+            }else{
         
-		$dnlLink = get_page_uri($post->ID).'?theDLfile='.$userID.'/'.$Thefile;
-		$DelLink = get_page_uri($post->ID).'?deletefile='.$userID.'/'.$Thefile; 
-
-
+            $DelLink = '?page_id='.$post->ID.'&deletefile='.$userID.'/'.$Thefile;
+            $dnlLink = '?page_id='.$post->ID.'&theDLfile='.$userID.'/'.$Thefile;
+            }
+		
+	} 
 		
 		echo '<td class="'.$TheClass.'" align="right"><a rel="download.png" href="'.$dnlLink.'">     <img title="Download '.$Thefile.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>';
 		
@@ -255,7 +268,7 @@ $currOpts_menu = get_option('file_manger_show_menu');
 
 }
 
-function manage_files_user() {
+function manage_files_user() { 
 global $wpdb;
 global $id;
 

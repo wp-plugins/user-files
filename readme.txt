@@ -1,6 +1,6 @@
 === user files ===
 Contributors: Innovative Solutions
-Tags: user files, User Files, File Manger
+Tags: User Files, File Manager, User File System, file management
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.4.1

@@ -1,25 +1,10 @@
 <?php
 /*
-Plugin Name: User File Manager
-Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
-Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
-Author: Innovative Solutions
-Version: 2.3.6
-Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
+Plugin Name: User File ManagerPlugin URI: http://www.whereyoursolutionis.com/user-files-plugin/Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  Author: Innovative SolutionsVersion: 2.4Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
 */
 
 
-register_activation_hook(__FILE__,'ActivateFileDir'); 
-add_action('admin_menu', 'show_FM_pages');
-add_action('wp_dashboard_setup', 'file_manager_dashboard');
-add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
-add_action('init','getDownloads');
-add_action('wp_head','uploadHelper');
-add_action('admin_notices','verifyInstall');
-add_filter('query_vars', 'getDeleted');
-
-
-add_action( 'init', 'userfiles_textdomain' );
+register_activation_hook(__FILE__,'ActivateFileDir'); add_action('admin_menu', 'show_FM_pages');add_action('wp_dashboard_setup', 'file_manager_dashboard');add_shortcode( 'user_file_manager' , 'manage_files_userpage' );add_action('init','getDownloads'); add_action('wp_head','uploadHelper');add_action('admin_notices','verifyInstall');add_filter('query_vars', 'getDeleted');add_action( 'init', 'userfiles_textdomain' );
 
 $instalVersion=5;
 
@@ -447,9 +432,9 @@ set_abase();
 global $wpdb;
 $upload_dir = wp_upload_dir();
 
-if (isset($_POST['deletefile'])){
+if (isset($_GET['deletefile'])){
 
-$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$_POST['deletefile']);
+$isitGone = unlink($upload_dir['basedir'].'/file_uploads/'.$_GET['deletefile']);
 
 $toUsFl=explode ( "/" , $_GET['deletefolder'] );
 
@@ -722,8 +707,8 @@ while ( ($file = readdir($handle))!== false) {
 								$userNum=(int)$file;
 								$user_info = get_userdata($userNum); 
 								echo '<thead>';
-								echo '<th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span></th><th></th><th>Date</th><th width="20%">Category</th>';
-								echo '<th width ="10%"></th></thead>'; 
+								echo '<tr><th width "70%"><u>'.__('User Login','userfiles').':</u>  '.$user_info->user_login.' | <u>'.__('User Name','userfiles').':</u>  '.$user_info->first_name. ' '.$user_info->last_name .' <span style="font-size:10;"> (<a href="admin.php?page=manage-files-main&deletefolder='.$upload_dir['basedir'].'/file_uploads/'.$userNum .'"> '.__('Delete Folder','userfiles').'</a>) </span></th><th>&nbsp;</th><th>Date</th><th width="20%">Category</th>';
+								echo '<th width ="10%"></th></tr></thead>'; 
 																					
 								}
 								
@@ -732,12 +717,12 @@ while ( ($file = readdir($handle))!== false) {
 								
 								
 								echo '<td><input type="checkbox" name="change_cat'.$tp .'" value="addit" /> <input type="hidden" name="file'.$tp.'" value="'.$files.'" ><input type="hidden" name="changecat_user'.$tp.'" value="'.$userNum.'"> <img src="'. $tExt.'" width="20" >   '.pathinfo($files, PATHINFO_FILENAME).'</td>';
-								
+							echo '<td>'. GetTimeStamp($files,$userNum) .'</td>';	
 								echo '<td>';
                           $currOpts_defcat = get_option('file_manger_defaultcat');
 						
 						
-						
+					
 							
 							$getCrntCat = $wpdb->get_var("SELECT category FROM ". $wpdb->prefix . "userfile_data WHERE filename = '".$files ."' and user_id='" .$userNum. "'");	 
 								 
@@ -749,9 +734,13 @@ while ( ($file = readdir($handle))!== false) {
 								echo $getCrntCat;
 								}
 								
-						echo'</td>';			 
+						echo'</td>';
+
+
+				
+						
 																
-						echo '<td align="right"><form method="get" action="'.$_SERVER['REQUEST_URI'].'"><input name="theDLfile" rel="download.png"  value="'.$userNum.'/'.$files.'" type="image" title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /> | <input type="image" name="deletefile" value="'.$userNum.'/'.$files.'" title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png ' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></form>	</a></td></tr>';
+						echo '<td align="right"><a href="admin.php?page=manage-files-main&theDLfile='.$userNum.'/'.$files.'" ><img title="Download '.$files.'" src="'.plugins_url( '/user-files/img/download.png' , dirname(__FILE__) ). '"   alt="" width="20" height="20" /></a>  | <a href="admin.php?page=manage-files-main&deletefile='.$userNum.'/'.$files.'> <img title="Delete '.$files.'" src="'.plugins_url( '/user-files/img/delete.png' , dirname(__FILE__) ). '" alt="" width="20" height="20" /></a></td></tr>';
 						$tp++;
 								}
 				
@@ -1092,7 +1081,7 @@ $upload_dir = wp_upload_dir();
 
 	if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 	
-	$wpdb->insert( $wpdb->prefix . "userfile_data", array( 'id'=> '','user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
+	$wpdb->insert( $wpdb->prefix . "userfile_data", array( 'user_id'=>$subDir,'category'=>$_POST['curr_cat'],'filename'=>basename( $_FILES['uploadedfile']['name'] ))); 
 	
 		
         
@@ -1166,7 +1155,7 @@ Choose a file to upload, your upload limit is <?php echo $max_post; ?>M <br /> <
 						
 						
                         ?>
-					<option value="<?php echo $iCats->category. '">'. $iCats->category; ?> </option>
+					<option value="<?php echo $iCats->category; ?>"><?php echo $iCats->category; ?> </option>
 
 					<?php
 					endforeach;
@@ -1214,13 +1203,13 @@ $currOpts_credits = get_option('file_manger_credit');
 		global $current_user;
 			  get_currentuserinfo();
               
-		if (isset($_POST['deletefile'])){
+		if (isset($_GET['deletefile'])){
 
 
 			
 			
 			
-				$theDel_file=$_POST['deletefile'];
+				$theDel_file=$_GET['deletefile'];
 
 				$isitGone = @unlink($upload_dir['basedir'].'/file_uploads/'.$theDel_file); 
 
@@ -1528,6 +1517,8 @@ The options to enable the File manager page and dashboard widgets are in the <a 
 }
 
 function getDownloads(){
+
+
 
 if (isset($_GET['theDLfile']) || isset($_POST['theDLfile'])){
 

@@ -4,7 +4,7 @@ Tags: user files, User Files, File Manger
 Donate:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RMCSV4J9FALZ6
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable Tag:2.3.6
+Stable Tag:2.4
 
 User files allows you to upload files for a specific user to download. Custom Icons and categories are available to more easily search and filter files.  
 
@@ -109,3 +109,6 @@ Files can have icons and category, both are customizable.  Users and admins can 
 2.3.6
 Added more compatibility for  the USer Files Front End Admin addon
 Increased security for files
+
+2.4
+Fixed download issue with firefox

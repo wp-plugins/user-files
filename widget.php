@@ -9,6 +9,7 @@ class userfilesList extends WP_Widget {
 
     /** @see WP_Widget::widget */
     function widget($args, $instance) {
+	global $post;
         extract( $args );
         $title = apply_filters('widget_title', $instance['title']);
         ?>
@@ -29,20 +30,14 @@ class userfilesList extends WP_Widget {
 				
 						$ext = pathinfo($file, PATHINFO_EXTENSION); 
 						$tExt= SetIcon($ext);
-                         if (strpos($url,'?') ==false){
-                        $dnlLink = curPageName().'?theDLfile='.$file;
-                        
-                        }else{
-                        
-                        $dnlLink = curPageName().'&theDLfile='.$file;
-                        }
+ 
 		
 				
-				echo '<img src="'. $tExt.'" width="15" ><a rel="download.png" href="'.$dnlLink .'"> '.pathinfo($file, PATHINFO_FILENAME).'</a><br />';	
+				echo '<img src="'. $tExt.'" width="15" ><a rel="download.png" href="'.site_url().'?p='.$post->ID.'&theDLfile='.$user_id.'/'.$file.'" > '.pathinfo($file, PATHINFO_FILENAME).'</a><br />';	 
 						
 						echo '<hr width="100%" size="2px" />';
 				}
-			}
+			} 
 		}
         
 	}else{

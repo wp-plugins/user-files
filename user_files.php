@@ -1,10 +1,25 @@
 <?php
 /*
-Plugin Name: User File ManagerPlugin URI: http://www.whereyoursolutionis.com/user-files-plugin/Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  Author: Innovative SolutionsVersion: 2.4Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
+Plugin Name: User File Manager
+Plugin URI: http://www.whereyoursolutionis.com/user-files-plugin/
+Description: Plugin to manage files for your users. You can upload files for your users to access, files uploaded to the user account are only viewable by the designated user. Files can be sorted and uploaded by category. Options available for user to add and/or delete files, upload notifications, widgets, and shortcode. You can also use custom icons for files.  
+Author: Innovative Solutions
+Author URI: http://www.whereyoursolutionis.com/author/scriptonite/
+Version: 2.4.1
 */
 
 
-register_activation_hook(__FILE__,'ActivateFileDir'); add_action('admin_menu', 'show_FM_pages');add_action('wp_dashboard_setup', 'file_manager_dashboard');add_shortcode( 'user_file_manager' , 'manage_files_userpage' );add_action('init','getDownloads'); add_action('wp_head','uploadHelper');add_action('admin_notices','verifyInstall');add_filter('query_vars', 'getDeleted');add_action( 'init', 'userfiles_textdomain' );
+register_activation_hook(__FILE__,'ActivateFileDir'); 
+add_action('admin_menu', 'show_FM_pages');
+add_action('wp_dashboard_setup', 'file_manager_dashboard');
+add_shortcode( 'user_file_manager' , 'manage_files_userpage' );
+add_action('init','getDownloads'); 
+add_action('wp_head','uploadHelper');
+add_action('admin_notices','verifyInstall');
+add_filter('query_vars', 'getDeleted');
+
+
+add_action( 'init', 'userfiles_textdomain' );
 
 $instalVersion=5;
 
@@ -1585,11 +1600,11 @@ return;
 }
 
 /*DOWNLOAD FUNCTION */
-
+ 
 function output_file($file, $name, $mime_type='')
 {
 
- if(!is_readable($file)) die('File not found or inaccessible!<br />'.$file.'<br /> '.$name);
+ if(!is_readable($file)) wp_die($name.' not found or inaccessible!<br />');
  
  $size = filesize($file);
  $name = rawurldecode($name);
